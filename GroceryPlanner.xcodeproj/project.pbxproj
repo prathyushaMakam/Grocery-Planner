@@ -233,7 +233,7 @@
 				TargetAttributes = {
 					769A4D181DE2696E002375B7 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = T2LDMWZS2N;
+						DevelopmentTeam = 4ZN232DM33;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -249,11 +249,13 @@
 					};
 					769A4D2C1DE2696F002375B7 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 4ZN232DM33;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 769A4D181DE2696E002375B7;
 					};
 					769A4D371DE2696F002375B7 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 4ZN232DM33;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 769A4D181DE2696E002375B7;
 					};
@@ -513,7 +515,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GroceryPlanner/GroceryPlanner.entitlements;
-				DEVELOPMENT_TEAM = T2LDMWZS2N;
+				DEVELOPMENT_TEAM = 4ZN232DM33;
 				INFOPLIST_FILE = GroceryPlanner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -529,7 +531,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GroceryPlanner/GroceryPlanner.entitlements;
-				DEVELOPMENT_TEAM = T2LDMWZS2N;
+				DEVELOPMENT_TEAM = 4ZN232DM33;
 				INFOPLIST_FILE = GroceryPlanner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -544,6 +546,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 4ZN232DM33;
 				INFOPLIST_FILE = GroceryPlannerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Prathyusha.GroceryPlannerTests;
@@ -558,6 +561,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 4ZN232DM33;
 				INFOPLIST_FILE = GroceryPlannerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Prathyusha.GroceryPlannerTests;
@@ -571,6 +575,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 4ZN232DM33;
 				INFOPLIST_FILE = GroceryPlannerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Prathyusha.GroceryPlannerUITests;
@@ -584,6 +589,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 4ZN232DM33;
 				INFOPLIST_FILE = GroceryPlannerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Prathyusha.GroceryPlannerUITests;
