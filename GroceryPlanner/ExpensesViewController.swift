@@ -1,76 +1,55 @@
 //
-//  CategoryViewController.swift
+//  ExpensesViewController.swift
 //  GroceryPlanner
 //
-//  Created by Prathyusha Makam Prasad on 12/8/16.
+//  Created by Prathyusha Makam Prasad on 12/9/16.
 //  Copyright © 2016 Prathyusha Makam Prasad. All rights reserved.
 //
 
 import UIKit
-import Firebase
-import FirebaseDatabase
 
-class CategoryViewController: UITableViewController {
-    
-    @IBOutlet weak var categoryView: UITableView!
-    var rootRef: FIRDatabaseReference!
-    var categoryNames: [String] = []
-    var rootUrl = "https://groceryplanner-e2a60.firebaseio.com/categories/"
+class ExpensesViewController: UITableViewController {
 
+    @IBOutlet weak var expensesTableView: UITableView!
     override func viewDidLoad() {
-        print("cat: b4 viewLoad \(categoryNames.count)")
-        
         super.viewDidLoad()
-        print("cat: after viewLoad and calling fetch \(categoryNames.count)")
-        for i in categoryNames{
-            print("cat: \(i)")
-        }
-        fetchCategories()
-        print("cat: after calling fetch \(categoryNames.count)")
+
+        expensesTableView.delegate = self
+        expensesTableView.dataSource = self
         
-        categoryView.delegate = self
-        categoryView.dataSource = self
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
+
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        // #warning Incomplete implementation, return the number of sections
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categoryNames.count
+        // #warning Incomplete implementation, return the number of rows
+        return 0
     }
-    
+
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
-        cell.textLabel?.text = categoryNames[indexPath.row]
-        
-        print("cat: inside cellRow")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
+        // Configure the cell...
+
         return cell
     }
-    
-    func fetchCategories()
-    {
-        print("cat: inside calling fetch \(categoryNames.count)")
-
-        rootRef = FIRDatabase.database().reference(fromURL: rootUrl)
-        rootRef.observe(.value, with: {
-            snapshot in
-            for category in snapshot.children {
-                print("cat: inside snapshot.children \(category)")
-                self.categoryNames.append((category as AnyObject).key)
-                print("cat: \(self.categoryNames) n \(self.categoryNames.count)")
-            }
-            DispatchQueue.main.async {
-                print("cat: reload data")
-                self.categoryView.reloadData()
-            }
-        })
-    }
+    */
 
     /*
     // Override to support conditional editing of the table view.
