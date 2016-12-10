@@ -15,9 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    override init() {
+        super.init()
+        // Firebase Init
         FIRApp.configure()
         FIRDatabase.database().persistenceEnabled = true
+
+    }
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+       // FIRApp.configure()
+       // FIRDatabase.database().persistenceEnabled = true
         return true
     }
 

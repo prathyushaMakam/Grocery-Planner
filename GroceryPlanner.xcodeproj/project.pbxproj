@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		760F9CC21DFA8EE2003115C9 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760F9CC11DFA8EE2003115C9 /* CategoryViewController.swift */; };
 		767D81AC1DF908F8000AEAB1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 767D81AB1DF908F8000AEAB1 /* GoogleService-Info.plist */; };
 		769A4D1D1DE2696F002375B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769A4D1C1DE2696F002375B7 /* AppDelegate.swift */; };
 		769A4D1F1DE2696F002375B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769A4D1E1DE2696F002375B7 /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		0C13A1EDB8CB4AB6252686E2 /* Pods-GroceryPlanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroceryPlanner.release.xcconfig"; path = "Pods/Target Support Files/Pods-GroceryPlanner/Pods-GroceryPlanner.release.xcconfig"; sourceTree = "<group>"; };
 		3695F12193E12F15A25B4F8B /* Pods_GroceryPlannerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GroceryPlannerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		760F9CC11DFA8EE2003115C9 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		767D81AB1DF908F8000AEAB1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		767D81AD1DF92902000AEAB1 /* GroceryPlanner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GroceryPlanner.entitlements; sourceTree = "<group>"; };
 		769A4D191DE2696E002375B7 /* GroceryPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +127,7 @@
 				769A4D1C1DE2696F002375B7 /* AppDelegate.swift */,
 				769A4D1E1DE2696F002375B7 /* ViewController.swift */,
 				769A4D201DE2696F002375B7 /* Main.storyboard */,
+				760F9CC11DFA8EE2003115C9 /* CategoryViewController.swift */,
 				769A4D231DE2696F002375B7 /* Assets.xcassets */,
 				769A4D251DE2696F002375B7 /* LaunchScreen.storyboard */,
 				767D81AB1DF908F8000AEAB1 /* GoogleService-Info.plist */,
@@ -363,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				769A4D1F1DE2696F002375B7 /* ViewController.swift in Sources */,
+				760F9CC21DFA8EE2003115C9 /* CategoryViewController.swift in Sources */,
 				769A4D1D1DE2696F002375B7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
