@@ -1,76 +1,60 @@
 //
-//  CategoryViewController.swift
+//  ItemsTableViewController.swift
 //  GroceryPlanner
 //
-//  Created by Prathyusha Makam Prasad on 12/8/16.
+//  Created by Kanvi Khanna on 12/10/16.
 //  Copyright © 2016 Prathyusha Makam Prasad. All rights reserved.
 //
 
 import UIKit
-import Firebase
-import FirebaseDatabase
 
-class CategoryViewController: UITableViewController {
+class ItemsTableViewController: UITableViewController {
+
+    @IBOutlet weak var itemsTableView: UITableView!
+    var listItems = ["xx","yy","zz"]
     
-    @IBOutlet weak var categoryView: UITableView!
-    var rootRef: FIRDatabaseReference!
-    var categoryNames: [String] = []
-    var rootUrl = "https://groceryplanner-e2a60.firebaseio.com/users/1/categories/"
-
     override func viewDidLoad() {
-        print("cat: b4 viewLoad \(categoryNames.count)")
-        
         super.viewDidLoad()
-        print("cat: after viewLoad and calling fetch \(categoryNames.count)")
-        for i in categoryNames{
-            print("cat: \(i)")
-        }
-        fetchCategories()
-        print("cat: after calling fetch \(categoryNames.count)")
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        categoryView.delegate = self
-        categoryView.dataSource = self
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .plain, target: self, action:#selector(addItem))
     }
     
+    func addItem(){
+        listItems.append("a")
+        tableView.reloadData()
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
+
     override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categoryNames.count
+        // #warning Incomplete implementation, return the number of rows
+        return listItems.count
     }
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
-        cell.textLabel?.text = categoryNames[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath)
+        cell.textLabel?.text = listItems[indexPath.row]
         
-        print("cat: inside cellRow")
         return cell
     }
     
-    func fetchCategories()
-    {
-        print("cat: inside calling fetch \(categoryNames.count)")
-
-        rootRef = FIRDatabase.database().reference(fromURL: rootUrl)
-        rootRef.observe(.value, with: {
-            snapshot in
-            for category in snapshot.children {
-                print("cat: inside snapshot.children \(category)")
-                self.categoryNames.append((category as AnyObject).key)
-                print("cat: \(self.categoryNames) n \(self.categoryNames.count)")
-            }
-            DispatchQueue.main.async {
-                print("cat: reload data")
-                self.categoryView.reloadData()
-            }
-        })
-    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -80,17 +64,15 @@ class CategoryViewController: UITableViewController {
     }
     */
 
-    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            listItems.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
 
     /*
     // Override to support rearranging the table view.

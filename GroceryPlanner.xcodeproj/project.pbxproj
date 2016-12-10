@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D162B391DFCB7E0000A324F /* ItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D162B381DFCB7E0000A324F /* ItemsTableViewController.swift */; };
 		760F9CC21DFA8EE2003115C9 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760F9CC11DFA8EE2003115C9 /* CategoryViewController.swift */; };
 		767D81AC1DF908F8000AEAB1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 767D81AB1DF908F8000AEAB1 /* GoogleService-Info.plist */; };
 		768EFCD31DFBB0F8006AF6D0 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768EFCD21DFBB0F8006AF6D0 /* ExpensesViewController.swift */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		0C13A1EDB8CB4AB6252686E2 /* Pods-GroceryPlanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroceryPlanner.release.xcconfig"; path = "Pods/Target Support Files/Pods-GroceryPlanner/Pods-GroceryPlanner.release.xcconfig"; sourceTree = "<group>"; };
 		3695F12193E12F15A25B4F8B /* Pods_GroceryPlannerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GroceryPlannerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D162B381DFCB7E0000A324F /* ItemsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsTableViewController.swift; sourceTree = "<group>"; };
 		760F9CC11DFA8EE2003115C9 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		767D81AB1DF908F8000AEAB1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		767D81AD1DF92902000AEAB1 /* GroceryPlanner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GroceryPlanner.entitlements; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		769A4D1B1DE2696E002375B7 /* GroceryPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				4D162B381DFCB7E0000A324F /* ItemsTableViewController.swift */,
 				767D81AD1DF92902000AEAB1 /* GroceryPlanner.entitlements */,
 				769A4D1C1DE2696F002375B7 /* AppDelegate.swift */,
 				769A4D1E1DE2696F002375B7 /* ViewController.swift */,
@@ -373,6 +376,7 @@
 			files = (
 				769A4D1F1DE2696F002375B7 /* ViewController.swift in Sources */,
 				768EFCD31DFBB0F8006AF6D0 /* ExpensesViewController.swift in Sources */,
+				4D162B391DFCB7E0000A324F /* ItemsTableViewController.swift in Sources */,
 				768EFCD51DFBF72B006AF6D0 /* MyListViewController.swift in Sources */,
 				760F9CC21DFA8EE2003115C9 /* CategoryViewController.swift in Sources */,
 				769A4D1D1DE2696F002375B7 /* AppDelegate.swift in Sources */,
