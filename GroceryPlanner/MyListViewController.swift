@@ -1,60 +1,56 @@
 //
-//  ExpensesViewController.swift
+//  MyListViewController.swift
 //  GroceryPlanner
 //
-//  Created by Prathyusha Makam Prasad on 12/9/16.
+//  Created by Prathyusha Makam Prasad on 12/10/16.
 //  Copyright © 2016 Prathyusha Makam Prasad. All rights reserved.
 //
 
 import UIKit
 
-class ExpensesViewController: UITableViewController {
+class MyListViewController: UITableViewController {
 
-    @IBOutlet weak var expensesTableView: UITableView!
-    let section = ["Pizza","deep dish pizza", "calzone"]
-    let items = [["margarita","BBQ","Pepperoni"],["sausage","veggie"],["chicken","mushroom"]]
-    let costs = [[2,4,5],[4,9],[2,1]]
+    @IBOutlet weak var myListTableView: UITableView!
+    var listItems = ["xx","yy","zz"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        expensesTableView.delegate = self
-        expensesTableView.dataSource = self
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .plain, target: self, action:#selector(addItem))
     }
 
-    override func didReceiveMemoryWarning() {
+    func addItem () {
+        listItems.append("a")
+        tableView.reloadData()
+    }
+    
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.section[section]
-    }
-    
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return self.section.count
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.items[section].count
+        return listItems.count
     }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "expenseCell", for: indexPath)
 
-        // Configure the cell...
-        cell.textLabel?.text = self.items[indexPath.section][indexPath.row]
-        cell.detailTextLabel?.text = String(self.costs[indexPath.section][indexPath.row])
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myListCell", for: indexPath)
+        cell.textLabel?.text = listItems[indexPath.row]
+
         return cell
     }
+    
+   
+ 
 
     /*
     // Override to support conditional editing of the table view.
@@ -64,17 +60,17 @@ class ExpensesViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            listItems.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.

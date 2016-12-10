@@ -10,6 +10,7 @@
 		760F9CC21DFA8EE2003115C9 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760F9CC11DFA8EE2003115C9 /* CategoryViewController.swift */; };
 		767D81AC1DF908F8000AEAB1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 767D81AB1DF908F8000AEAB1 /* GoogleService-Info.plist */; };
 		768EFCD31DFBB0F8006AF6D0 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768EFCD21DFBB0F8006AF6D0 /* ExpensesViewController.swift */; };
+		768EFCD51DFBF72B006AF6D0 /* MyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768EFCD41DFBF72B006AF6D0 /* MyListViewController.swift */; };
 		769A4D1D1DE2696F002375B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769A4D1C1DE2696F002375B7 /* AppDelegate.swift */; };
 		769A4D1F1DE2696F002375B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769A4D1E1DE2696F002375B7 /* ViewController.swift */; };
 		769A4D221DE2696F002375B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 769A4D201DE2696F002375B7 /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 		767D81AB1DF908F8000AEAB1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		767D81AD1DF92902000AEAB1 /* GroceryPlanner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GroceryPlanner.entitlements; sourceTree = "<group>"; };
 		768EFCD21DFBB0F8006AF6D0 /* ExpensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesViewController.swift; sourceTree = "<group>"; };
+		768EFCD41DFBF72B006AF6D0 /* MyListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyListViewController.swift; sourceTree = "<group>"; };
 		769A4D191DE2696E002375B7 /* GroceryPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		769A4D1C1DE2696F002375B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		769A4D1E1DE2696F002375B7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				769A4D1C1DE2696F002375B7 /* AppDelegate.swift */,
 				769A4D1E1DE2696F002375B7 /* ViewController.swift */,
 				769A4D201DE2696F002375B7 /* Main.storyboard */,
+				768EFCD41DFBF72B006AF6D0 /* MyListViewController.swift */,
 				768EFCD21DFBB0F8006AF6D0 /* ExpensesViewController.swift */,
 				760F9CC11DFA8EE2003115C9 /* CategoryViewController.swift */,
 				769A4D231DE2696F002375B7 /* Assets.xcassets */,
@@ -370,6 +373,7 @@
 			files = (
 				769A4D1F1DE2696F002375B7 /* ViewController.swift in Sources */,
 				768EFCD31DFBB0F8006AF6D0 /* ExpensesViewController.swift in Sources */,
+				768EFCD51DFBF72B006AF6D0 /* MyListViewController.swift in Sources */,
 				760F9CC21DFA8EE2003115C9 /* CategoryViewController.swift in Sources */,
 				769A4D1D1DE2696F002375B7 /* AppDelegate.swift in Sources */,
 			);
