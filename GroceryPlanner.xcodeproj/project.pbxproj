@@ -133,16 +133,16 @@
 		769A4D1B1DE2696E002375B7 /* GroceryPlanner */ = {
 			isa = PBXGroup;
 			children = (
-				4D162B381DFCB7E0000A324F /* ItemsTableViewController.swift */,
 				767D81AD1DF92902000AEAB1 /* GroceryPlanner.entitlements */,
 				769A4D1C1DE2696F002375B7 /* AppDelegate.swift */,
 				769A4D1E1DE2696F002375B7 /* ViewController.swift */,
 				769A4D201DE2696F002375B7 /* Main.storyboard */,
+				760F9CC11DFA8EE2003115C9 /* CategoryViewController.swift */,
+				4D162B381DFCB7E0000A324F /* ItemsTableViewController.swift */,
 				4DE342891DFCD89500887BD7 /* CategoryPopupViewController.swift */,
 				4DE342871DFCD15A00887BD7 /* ItemPopupViewController.swift */,
 				768EFCD41DFBF72B006AF6D0 /* MyListViewController.swift */,
 				768EFCD21DFBB0F8006AF6D0 /* ExpensesViewController.swift */,
-				760F9CC11DFA8EE2003115C9 /* CategoryViewController.swift */,
 				769A4D231DE2696F002375B7 /* Assets.xcassets */,
 				769A4D251DE2696F002375B7 /* LaunchScreen.storyboard */,
 				767D81AB1DF908F8000AEAB1 /* GoogleService-Info.plist */,

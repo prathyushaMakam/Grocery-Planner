@@ -7,22 +7,25 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
+
 
 class ItemsTableViewController: UITableViewController {
 
     @IBOutlet weak var itemsTableView: UITableView!
-    var listItems = ["xx","yy","zz"]
+    var rootRef: FIRDatabaseReference!
+    var listItems:[String] = []
+    var categoryValue:String!
+    var rootUrl:String = ""
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("item recieved: \(categoryValue!)")
+        rootUrl = ("https://groceryplanner-e2a60.firebaseio.com/users/1/categories/"+categoryValue!)
+        fetchItems()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        //navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .plain, target: self, action:#selector(addItem))
     }
     
     @IBAction func addItem(){
@@ -56,6 +59,25 @@ class ItemsTableViewController: UITableViewController {
         return cell
     }
     
+    func fetchItems()
+    {
+       // print("cat: inside calling fetch \(categoryNames.count)")
+        
+        rootRef = FIRDatabase.database().reference(fromURL: rootUrl)
+        rootRef.observe(.value, with: {
+            snapshot in
+            for items in snapshot.children {
+                print("cat: inside snapshot.children \(items)")
+                self.listItems.append((items as AnyObject).key)
+               // print("cat: \(self.categoryNames) n \(self.categoryNames.count)")
+            }
+            DispatchQueue.main.async {
+                print("cat: reload data")
+                self.itemsTableView.reloadData()
+            }
+        })
+    }
+
 
     /*
     // Override to support conditional editing of the table view.

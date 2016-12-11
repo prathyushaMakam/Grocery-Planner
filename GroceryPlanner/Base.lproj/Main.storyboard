@@ -51,7 +51,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Wva-Ru-AZG" kind="show" id="hnu-GG-6tJ"/>
+                                    <segue destination="Wva-Ru-AZG" kind="show" identifier="toItems" id="hnu-GG-6tJ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
