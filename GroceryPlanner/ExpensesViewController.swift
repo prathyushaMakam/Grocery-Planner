@@ -8,17 +8,17 @@
 
 import UIKit
 
-class ExpensesViewController: UITableViewController {
-
+class ExpensesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var expensesTableView: UITableView!
-    let section = ["Pizza","deep dish pizza", "calzone"]
-    let items = [["margarita","BBQ","Pepperoni"],["sausage","veggie"],["chicken","mushroom"]]
+
+    let sectionNames = ["Pizza","deep dish pizza", "calzone"]
+   // let items = [["margarita","BBQ","Pepperoni"],["sausage","veggie"],["chicken","mushroom"]]
     let costs = [[2,4,5],[4,9],[2,1]]
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        expensesTableView.delegate = self
-        expensesTableView.dataSource = self
+       // expensesTableView.delegate = self
+      //  expensesTableView.dataSource = self
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -33,26 +33,23 @@ class ExpensesViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.section[section]
-    }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    public func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return self.section.count
+        return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.items[section].count
+        return sectionNames.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "expenseCell", for: indexPath)
 
         // Configure the cell...
-        cell.textLabel?.text = self.items[indexPath.section][indexPath.row]
-        cell.detailTextLabel?.text = String(self.costs[indexPath.section][indexPath.row])
+        cell.textLabel?.text = sectionNames[indexPath.row]
+        cell.detailTextLabel?.text = String(describing: costs[indexPath.row])
         return cell
     }
 
