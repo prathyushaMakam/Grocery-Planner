@@ -99,7 +99,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="MKU-pu-NLh" kind="show" id="hnu-GG-6tJ"/>
+                                    <segue destination="Wva-Ru-AZG" kind="show" id="hnu-GG-6tJ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -108,7 +108,13 @@
                             <outlet property="delegate" destination="92Q-SL-Mzn" id="ZlR-zp-Aep"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Categories" id="BLY-Rk-xnv"/>
+                    <navigationItem key="navigationItem" title="Categories" id="BLY-Rk-xnv">
+                        <barButtonItem key="rightBarButtonItem" title="+" id="nJo-70-pyj">
+                            <connections>
+                                <segue destination="uoN-j2-fOA" kind="presentation" id="1Z5-YC-h4C"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="categoryView" destination="xMw-NT-RS0" id="L7i-SE-Ph7"/>
                     </connections>
@@ -117,10 +123,10 @@
             </objects>
             <point key="canvasLocation" x="5076" y="-671"/>
         </scene>
-        <!--Items Table View Controller-->
+        <!--Food Items-->
         <scene sceneID="6NH-yS-Dhp">
             <objects>
-                <tableViewController id="MKU-pu-NLh" customClass="ItemsTableViewController" customModule="GroceryPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController modalTransitionStyle="crossDissolve" id="MKU-pu-NLh" customClass="ItemsTableViewController" customModule="GroceryPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="IUg-Oj-4S3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -140,13 +146,116 @@
                             <outlet property="delegate" destination="MKU-pu-NLh" id="E2F-6S-3OV"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Food Items" id="HxM-jq-x80">
+                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="Kz5-ME-53w">
+                            <connections>
+                                <action selector="BackToCategories:" destination="MKU-pu-NLh" id="wUj-Ki-yv4"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="+" id="cUG-4R-ino">
+                            <connections>
+                                <segue destination="gQ7-MU-dMz" kind="presentation" id="9zz-xP-E7c"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="itemsTableView" destination="IUg-Oj-4S3" id="Flh-7z-Nvz"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lzi-IV-btJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6069" y="-671"/>
+            <point key="canvasLocation" x="7007.1999999999998" y="-671.51424287856082"/>
+        </scene>
+        <!--Item Popup View Controller-->
+        <scene sceneID="ksI-6b-GG1">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="gQ7-MU-dMz" customClass="ItemPopupViewController" customModule="GroceryPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DWP-fd-RuP"/>
+                        <viewControllerLayoutGuide type="bottom" id="LQZ-VY-ORQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lQn-RM-xPM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ES0-Eq-NF7">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cK4-H6-hpy">
+                                        <frame key="frameInset" minX="30" minY="33" width="71" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price per" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggl-U5-UBH">
+                                        <frame key="frameInset" minX="30" minY="86" width="71" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Quantity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPp-Bx-fXN">
+                                        <frame key="frameInset" minX="30" minY="141" width="71" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1FY-PN-1C9">
+                                        <frame key="frameInset" minX="148" minY="36" width="125" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nZt-aq-luH">
+                                        <frame key="frameInset" minX="148" minY="89" width="125" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XDa-2i-tLh">
+                                        <frame key="frameInset" minX="148" minY="144" width="125" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uke-7R-hng">
+                                        <frame key="frameInset" minX="30" minY="201" width="71" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Save"/>
+                                        <connections>
+                                            <action selector="saveItem:" destination="gQ7-MU-dMz" eventType="touchUpInside" id="fzc-fe-em8"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KUa-LK-heQ">
+                                        <frame key="frameInset" minX="154" minY="201" width="74" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancel:" destination="gQ7-MU-dMz" eventType="touchUpInside" id="n4w-6T-emF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="292" id="UHv-fh-kZk"/>
+                                    <constraint firstAttribute="height" constant="257" id="dMI-7S-1BR"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ES0-Eq-NF7" firstAttribute="centerX" secondItem="lQn-RM-xPM" secondAttribute="centerX" id="UpK-oK-5vX"/>
+                            <constraint firstItem="ES0-Eq-NF7" firstAttribute="centerY" secondItem="lQn-RM-xPM" secondAttribute="centerY" id="wqb-5N-7ih"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TCF-mp-Idt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7728.8000000000002" y="-675.11244377811101"/>
         </scene>
         <!--Categories-->
         <scene sceneID="qaq-kQ-9YG">
@@ -245,6 +354,87 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Zg-eY-WBW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4121" y="844"/>
+        </scene>
+        <!--Category Popup View Controller-->
+        <scene sceneID="Zej-Bw-HAG">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="uoN-j2-fOA" customClass="CategoryPopupViewController" customModule="GroceryPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9ix-hD-dQr"/>
+                        <viewControllerLayoutGuide type="bottom" id="9YK-ZV-5Mp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1Lo-XQ-f0N">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3em-Kw-YtZ">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKw-b9-WVi">
+                                        <frame key="frameInset" minX="17" minY="23" width="88" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="egc-cJ-Cx9">
+                                        <frame key="frameInset" minX="113" minY="23" width="194" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emT-gq-1Xg">
+                                        <frame key="frameInset" minX="17" minY="86" width="70" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Save"/>
+                                        <connections>
+                                            <action selector="saveCategory:" destination="uoN-j2-fOA" eventType="touchUpInside" id="gIb-Vs-gEu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mPw-O1-Ypo">
+                                        <frame key="frameInset" minX="161" minY="86" width="86" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancel:" destination="uoN-j2-fOA" eventType="touchUpInside" id="Uot-6M-BI0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="161" id="SuU-X4-FrW"/>
+                                    <constraint firstAttribute="width" constant="315" id="hj9-VU-4wo"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="3em-Kw-YtZ" firstAttribute="centerY" secondItem="1Lo-XQ-f0N" secondAttribute="centerY" id="YTW-Pf-tyM"/>
+                            <constraint firstItem="3em-Kw-YtZ" firstAttribute="centerX" secondItem="1Lo-XQ-f0N" secondAttribute="centerX" id="hgT-AW-wgK"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="urQ-ad-kaq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5684" y="-1400.1499250374814"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="b7Q-zG-AhF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="crossDissolve" id="Wva-Ru-AZG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Siz-SG-j8L">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MKU-pu-NLh" kind="relationship" relationship="rootViewController" id="S11-u0-2NP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qnt-7N-ecH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6068" y="-671.51424287856082"/>
         </scene>
     </scenes>
 </document>

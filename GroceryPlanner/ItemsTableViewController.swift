@@ -22,11 +22,12 @@ class ItemsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .plain, target: self, action:#selector(addItem))
+        //navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .plain, target: self, action:#selector(addItem))
     }
     
-    func addItem(){
-        listItems.append("a")
+    @IBAction func addItem(){
+        //listItems.append("a")
+        
         tableView.reloadData()
     }
 
@@ -99,4 +100,7 @@ class ItemsTableViewController: UITableViewController {
     }
     */
 
+    @IBAction func BackToCategories(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
