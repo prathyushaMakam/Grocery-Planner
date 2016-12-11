@@ -12,7 +12,7 @@ import CorePlot
 class ExpensesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var expensesTableView: UITableView!
     @IBOutlet weak var hostView: CPTGraphHostingView!
-    let sectionNames = ["Pizza","deep dish pizza", "calzone","x","y"]
+    let sectionNames = ["Pizza","deep dish pizza", "calzone"]
    // let items = [["margarita","BBQ","Pepperoni"],["sausage","veggie"],["chicken","mushroom"]]
     let costs = [[2,4,5],[4,9],[2,1]]
     override func viewDidLoad() {
