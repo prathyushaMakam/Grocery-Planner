@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5az-TF-P3l">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5az-TF-P3l">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -50,9 +50,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="Wva-Ru-AZG" kind="show" identifier="toItems" id="hnu-GG-6tJ"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -63,7 +60,7 @@
                     <navigationItem key="navigationItem" title="Categories" id="BLY-Rk-xnv">
                         <barButtonItem key="rightBarButtonItem" title="+" id="nJo-70-pyj">
                             <connections>
-                                <segue destination="uoN-j2-fOA" kind="presentation" id="1Z5-YC-h4C"/>
+                                <segue destination="Wva-Ru-AZG" kind="presentation" identifier="toItems" id="fVA-db-V2z"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
