@@ -7,17 +7,58 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 class MyListViewController: UITableViewController {
 
     @IBOutlet weak var myListTableView: UITableView!
-    var listItems = ["xx","yy","zz"]
+    var rootRef: FIRDatabaseReference!
+    var childRef: FIRDatabaseReference!
+    var listItems: [String] = []
+    var rootUrl = "https://groceryplanner-e2a60.firebaseio.com/users/1/"
+    var childUrl:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .plain, target: self, action:#selector(addItem))
+        getCategories()
     }
+    
+    func getCategories(){
+        // get category for each user
+        rootRef = FIRDatabase.database().reference(fromURL: rootUrl)
+        rootRef.child("categories").observeSingleEvent(of: .value, with: { snapshot in
+            if let result = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                for child in result {
+                    // create the child url
+                    self.childUrl = self.rootUrl+"categories/"+child.key+"/"
+                    
+                    // get item under each category
+                    self.getItems()
+                }
+            } else {
+                print("no results")
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    func getItems(){
+        self.childRef = FIRDatabase.database().reference(fromURL: self.childUrl)
+        self.childRef.observe(.value, with: {
+            snapshot1 in
+            for item in snapshot1.children {
+                self.listItems.append((item as AnyObject).key)
+            }
+            DispatchQueue.main.async {
+                self.myListTableView.reloadData()
+            }
+        })
+    }
+    
+    
 
     func addItem () {
         listItems.append("a")
