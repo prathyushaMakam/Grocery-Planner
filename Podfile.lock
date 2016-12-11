@@ -1,4 +1,5 @@
 PODS:
+  - CorePlot (2.2)
   - Firebase/Core (3.10.0):
     - FirebaseAnalytics (= 3.6.0)
     - FirebaseCore (= 3.4.5)
@@ -25,10 +26,12 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.0)
 
 DEPENDENCIES:
+  - CorePlot (~> 2.2)
   - Firebase/Core
   - Firebase/Database
 
 SPEC CHECKSUMS:
+  CorePlot: cbe0c6e14220705e32e06a89c7d6a5a908b7d7d8
   Firebase: 387f37c7dca894a02708da9ff35ba147040eae9e
   FirebaseAnalytics: 9c67af0ebeb8d2146c9b4ea2616439affa947b58
   FirebaseCore: 1e383fdfe37b6b5d6ff88e84204bdee30276af0f
@@ -38,6 +41,6 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
 
-PODFILE CHECKSUM: e2164da76a0b82ccdd3f8befa294ffdc8d80db9f
+PODFILE CHECKSUM: f6d0a6f9df17a758a04fe706326ef9c6fc660cdf
 
 COCOAPODS: 1.1.1
