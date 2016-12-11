@@ -17,13 +17,13 @@ class ItemsTableViewController: UITableViewController {
     var rootRef: FIRDatabaseReference!
     var listItems:[String] = []
     var categoryValue:String!
-    var rootUrl:String = ""
+    var rootUrl:String!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("item recieved: \(categoryValue!)")
-        rootUrl = ("https://groceryplanner-e2a60.firebaseio.com/users/1/categories/"+categoryValue!)
+        print("item recieved: \(categoryValue)")
+        rootUrl = ("https://groceryplanner-e2a60.firebaseio.com/users/1/categories/"+categoryValue)
         fetchItems()
 
     }

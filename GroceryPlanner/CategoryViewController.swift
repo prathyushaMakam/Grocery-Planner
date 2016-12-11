@@ -15,7 +15,7 @@ class CategoryViewController: UITableViewController {
     @IBOutlet weak var categoryView: UITableView!
     var rootRef: FIRDatabaseReference!
     var categoryNames: [String] = []
-    var valToPass:String = ""
+    var valToPass:String!
     var rootUrl = "https://groceryplanner-e2a60.firebaseio.com/users/1/categories/"
 
     override func viewDidLoad() {
@@ -55,18 +55,20 @@ class CategoryViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let indexPath = tableView.indexPathForSelectedRow
-        let currentCell = tableView.cellForRow(at: indexPath!)
-        valToPass = (currentCell?.textLabel?.text)!
-        self.performSegue(withIdentifier: "toItems", sender: self)
+        let selectedCategory = categoryNames[indexPath.row]
+        print("item: \(selectedCategory)")
+        valToPass = selectedCategory
+        print("item: valTO \(valToPass)")
+        performSegue(withIdentifier: "toItems", sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "toItems"){
             let nav = segue.destination as! UINavigationController
+            print("item nav working")
             let itemView = nav.topViewController as! ItemsTableViewController
             print("item to sent: \(valToPass)")
-
             itemView.categoryValue = valToPass
+            print("item itemView.: \(itemView.categoryValue) ")
         }
     }
     
