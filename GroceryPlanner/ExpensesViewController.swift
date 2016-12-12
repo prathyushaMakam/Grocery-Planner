@@ -21,6 +21,7 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
     var categoryNames:[String] = []
     var itemNames:[String] = []
     var categoryExpense:[Float] = []
+    var expenses: [String:Float] = [:]
     override func viewDidLoad() {
         super.viewDidLoad()
         getCategories()
@@ -45,7 +46,9 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
                 //print("cat: inside snapshot.children \(category)")
                 self.categoryNames.append((category as AnyObject).key)
                 var cat = ((category as AnyObject).key) as String
+                self.expenses[cat] = 0.0
                 print("hi \(cat)")
+                print("hi 1 \(self.expenses)")
                 self.getItems(cat: cat)
                 //print("cat: \(self.categoryNames) n \(self.categoryNames.count)")
             }
@@ -73,14 +76,15 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
     func getExpense(item:String,cat:String){
 
         childRef = FIRDatabase.database().reference(fromURL: rootUrl+"\(cat)/"+"\(item)/")
-        
         childRef.observe(.value, with: {
             snapshot1 in
-            if let dict = snapshot1.value as? NSDictionary{
-            var price = dict["price"] as? Float
-            var quantity = dict["quantity"] as? Float
-            var cost = price! * quantity!
-            self.categoryExpense.append(cost)
+                if let dict = snapshot1.value as? NSDictionary{
+                var price = dict["price"] as? Float
+                var quantity = dict["quantity"] as? Float
+                var cost = price! * quantity!
+                self.expenses[cat] = self.expenses[cat]!+cost
+                print("hi 2 \(self.expenses)")
+                self.categoryExpense.append(cost)
         }
             DispatchQueue.main.async {
                 self.expensesTableView.reloadData()
@@ -90,11 +94,6 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
 
-    
-
-    
-
-    
     func initPlot() {
         configureHostView()
         configureGraph()
