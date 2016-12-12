@@ -8,19 +8,22 @@
 
 import UIKit
 import CorePlot
+import Firebase
+import FirebaseDatabase
 
 class ExpensesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var expensesTableView: UITableView!
     @IBOutlet weak var hostView: CPTGraphHostingView!
-    let sectionNames = ["Pizza","deep dish pizza", "calzone"]
-   // let items = [["margarita","BBQ","Pepperoni"],["sausage","veggie"],["chicken","mushroom"]]
-    let costs = [[2,4,5],[4,9],[2,1]]
+    var rootRef: FIRDatabaseReference!
+    var childRef: FIRDatabaseReference!
+    var rootUrl = "https://groceryplanner-e2a60.firebaseio.com/users/1/categories/"
+    var childUrl:String = ""
+    var categoryNames:[String] = []
+    var itemNames:[String] = []
+    var categoryExpense:[Float] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       // expensesTableView.delegate = self
-      //  expensesTableView.dataSource = self
-        
+        getCategories()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -32,6 +35,65 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLayoutSubviews()
         initPlot()
     }
+    
+    func getCategories(){
+        // get category for each user
+        rootRef = FIRDatabase.database().reference(fromURL: rootUrl)
+        rootRef.observe(.value, with: {
+            snapshot in
+            for category in snapshot.children {
+                //print("cat: inside snapshot.children \(category)")
+                self.categoryNames.append((category as AnyObject).key)
+                var cat = ((category as AnyObject).key) as String
+                print("hi \(cat)")
+                self.getItems(cat: cat)
+                //print("cat: \(self.categoryNames) n \(self.categoryNames.count)")
+            }
+        })
+    }
+    
+    func getItems(cat:String){
+
+        childRef = FIRDatabase.database().reference(fromURL: rootUrl+"\(cat)/")
+        childRef.observe(.value, with: {
+            snapshot1 in
+            for item in snapshot1.children {
+                self.itemNames.append((item as AnyObject).key)
+                //print("hi \(item)")
+                var item1 = ((item as AnyObject).key) as String
+                print("hi \(item1)")
+                self.getExpense(item: item1,cat: cat)
+            }
+
+        })
+ 
+
+    }
+    
+    func getExpense(item:String,cat:String){
+
+        childRef = FIRDatabase.database().reference(fromURL: rootUrl+"\(cat)/"+"\(item)/")
+        
+        childRef.observe(.value, with: {
+            snapshot1 in
+            if let dict = snapshot1.value as? NSDictionary{
+            var price = dict["price"] as? Float
+            var quantity = dict["quantity"] as? Float
+            var cost = price! * quantity!
+            self.categoryExpense.append(cost)
+        }
+            DispatchQueue.main.async {
+                self.expensesTableView.reloadData()
+            }
+        })
+        
+        
+    }
+
+    
+
+    
+
     
     func initPlot() {
         configureHostView()
@@ -115,15 +177,15 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return sectionNames.count
+        return categoryNames.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "expenseCell", for: indexPath)
 
         // Configure the cell...
-        cell.textLabel?.text = sectionNames[indexPath.row]
-        cell.detailTextLabel?.text = String(describing: costs[indexPath.row])
+        cell.textLabel?.text = categoryNames[indexPath.row]
+        cell.detailTextLabel?.text = String(describing: categoryExpense[indexPath.row])
         return cell
     }
 
@@ -177,7 +239,7 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
 extension ExpensesViewController: CPTPieChartDataSource, CPTPieChartDelegate {
     
     func numberOfRecords(for plot: CPTPlot) -> UInt {
-        return UInt(sectionNames.count)
+        return UInt(categoryNames.count)
     }
     
     func number(for plot: CPTPlot, field fieldEnum: UInt, record idx: UInt) -> Any? {
