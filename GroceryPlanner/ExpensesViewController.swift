@@ -18,13 +18,12 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
     var childRef: FIRDatabaseReference!
     var rootUrl = "https://groceryplanner-e2a60.firebaseio.com/users/1/categories/"
     var childUrl:String = ""
-    var categoryNames:[String] = []
-    var itemNames:[String] = []
     var categoryExpense:[Float] = []
     var expenses: [String:Float] = [:]
     override func viewDidLoad() {
         super.viewDidLoad()
         getCategories()
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -43,38 +42,25 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
         rootRef.observe(.value, with: {
             snapshot in
             for category in snapshot.children {
-                //print("cat: inside snapshot.children \(category)")
-                self.categoryNames.append((category as AnyObject).key)
                 var cat = ((category as AnyObject).key) as String
                 self.expenses[cat] = 0.0
-                print("hi \(cat)")
-                print("hi 1 \(self.expenses)")
                 self.getItems(cat: cat)
-                //print("cat: \(self.categoryNames) n \(self.categoryNames.count)")
             }
         })
     }
     
     func getItems(cat:String){
-
         childRef = FIRDatabase.database().reference(fromURL: rootUrl+"\(cat)/")
         childRef.observe(.value, with: {
             snapshot1 in
             for item in snapshot1.children {
-                self.itemNames.append((item as AnyObject).key)
-                //print("hi \(item)")
                 var item1 = ((item as AnyObject).key) as String
-                print("hi \(item1)")
                 self.getExpense(item: item1,cat: cat)
             }
-
         })
- 
-
     }
     
     func getExpense(item:String,cat:String){
-
         childRef = FIRDatabase.database().reference(fromURL: rootUrl+"\(cat)/"+"\(item)/")
         childRef.observe(.value, with: {
             snapshot1 in
@@ -83,16 +69,14 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
                 var quantity = dict["quantity"] as? Float
                 var cost = price! * quantity!
                 self.expenses[cat] = self.expenses[cat]!+cost
-                print("hi 2 \(self.expenses)")
                 self.categoryExpense.append(cost)
         }
             DispatchQueue.main.async {
                 self.expensesTableView.reloadData()
             }
         })
-        
-        
     }
+
 
     func initPlot() {
         configureHostView()
@@ -176,15 +160,18 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return categoryNames.count
+        return expenses.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "expenseCell", for: indexPath)
-
+        
+        var key   = Array(self.expenses.keys)[indexPath.row]
+        var value = Array(self.expenses.values)[indexPath.row]
+        
         // Configure the cell...
-        cell.textLabel?.text = categoryNames[indexPath.row]
-        cell.detailTextLabel?.text = String(describing: categoryExpense[indexPath.row])
+        cell.textLabel?.text = key
+        cell.detailTextLabel?.text = String(describing: value)
         return cell
     }
 
@@ -238,7 +225,7 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
 extension ExpensesViewController: CPTPieChartDataSource, CPTPieChartDelegate {
     
     func numberOfRecords(for plot: CPTPlot) -> UInt {
-        return UInt(categoryNames.count)
+        return UInt(expenses.count)
     }
     
     func number(for plot: CPTPlot, field fieldEnum: UInt, record idx: UInt) -> Any? {
