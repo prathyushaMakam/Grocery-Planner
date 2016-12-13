@@ -50,6 +50,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Wva-Ru-AZG" kind="presentation" identifier="toItems" trigger="accessoryAction" id="0Du-RU-rsI"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -60,7 +63,7 @@
                     <navigationItem key="navigationItem" title="Categories" id="BLY-Rk-xnv">
                         <barButtonItem key="rightBarButtonItem" title="+" id="nJo-70-pyj">
                             <connections>
-                                <segue destination="Wva-Ru-AZG" kind="presentation" identifier="toItems" id="fVA-db-V2z"/>
+                                <segue destination="uoN-j2-fOA" kind="presentation" id="50H-oc-bI2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -257,7 +260,13 @@
                             <outlet property="delegate" destination="zEn-9U-8AY" id="Ouc-Jv-0Dc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My List" id="pGj-94-mME"/>
+                    <navigationItem key="navigationItem" title="My List" id="pGj-94-mME">
+                        <barButtonItem key="rightBarButtonItem" title="+" id="9R2-lx-cw6">
+                            <connections>
+                                <segue destination="Z8h-Sd-oRQ" kind="presentation" identifier="addNewItem" id="5Si-I6-wzz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="myListTableView" destination="UCw-kE-QNs" id="Oah-IJ-5eu"/>
                     </connections>
@@ -265,6 +274,71 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1f8-Xo-CbW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5076" y="843"/>
+        </scene>
+        <!--My List Popup View Controller-->
+        <scene sceneID="I6a-eB-dmG">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="Z8h-Sd-oRQ" customClass="MyListPopupViewController" customModule="GroceryPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kVv-0W-hwP"/>
+                        <viewControllerLayoutGuide type="bottom" id="AMa-yb-PYz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wh7-kN-Egu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aR4-2c-gfr">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y0d-mq-asc">
+                                        <frame key="frameInset" minX="8" minY="8" width="103" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TxW-KK-ynj">
+                                        <frame key="frameInset" minX="8" minY="88" width="103" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Save"/>
+                                        <connections>
+                                            <action selector="saveItem:" destination="Z8h-Sd-oRQ" eventType="touchUpInside" id="84C-hC-zaD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbp-Nr-a7q">
+                                        <frame key="frameInset" minX="211" minY="88" width="112" height="38"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancelButton:" destination="Z8h-Sd-oRQ" eventType="touchUpInside" id="P6v-i1-0Er"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DvH-DZ-4jD">
+                                        <frame key="frameInset" minX="131" minY="12" width="192" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="334-lG-FGI"/>
+                                    <constraint firstAttribute="height" constant="145" id="RpQ-Qp-uHt"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aR4-2c-gfr" firstAttribute="centerX" secondItem="wh7-kN-Egu" secondAttribute="centerX" id="6o2-b0-nmv"/>
+                            <constraint firstItem="aR4-2c-gfr" firstAttribute="centerY" secondItem="wh7-kN-Egu" secondAttribute="centerY" id="iJa-Cc-uHB"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8nK-4o-CLY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5992.8000000000002" y="842.42878560719646"/>
         </scene>
         <!--Expenses-->
         <scene sceneID="efP-4d-XbD">

@@ -10,9 +10,10 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class MyListViewController: UITableViewController {
+class MyListViewController: UITableViewController{
 
     @IBOutlet weak var myListTableView: UITableView!
+    var newListItem:String!
     var rootRef: FIRDatabaseReference!
     var childRef: FIRDatabaseReference!
     var listItems: [String] = []
@@ -21,8 +22,8 @@ class MyListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .plain, target: self, action:#selector(addItem))
         getCategories()
+        print("list: \(newListItem)")
     }
     
     func getCategories(){
@@ -58,12 +59,6 @@ class MyListViewController: UITableViewController {
         })
     }
     
-    
-
-    func addItem () {
-        listItems.append("a")
-        tableView.reloadData()
-    }
     
     override func didReceiveMemoryWarning()
     {
