@@ -346,6 +346,7 @@
                     <connections>
                         <outlet property="expensesTableView" destination="Dqm-rY-HqY" id="iAj-ZH-Evh"/>
                         <outlet property="hostView" destination="Xhd-Hy-D45" id="xcb-7n-Gh0"/>
+                        <outlet property="totalExpenseLabel" destination="xbo-iJ-zD3" id="dPG-3t-Xhj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eir-j1-h0O" userLabel="First Responder" sceneMemberID="firstResponder"/>

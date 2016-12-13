@@ -12,6 +12,8 @@ import Firebase
 import FirebaseDatabase
 
 class ExpensesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var totalExpenseLabel: UILabel!
     @IBOutlet weak var expensesTableView: UITableView!
     @IBOutlet weak var hostView: CPTGraphHostingView!
     var rootRef: FIRDatabaseReference!
@@ -20,15 +22,12 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
     var childUrl:String = ""
     var categoryExpense:[Float] = []
     var expenses: [String:Float] = [:]
+    var totalExpense:Float = 0.0
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getCategories()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     override func viewDidLayoutSubviews() {
@@ -42,7 +41,7 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
         rootRef.observe(.value, with: {
             snapshot in
             for category in snapshot.children {
-                var cat = ((category as AnyObject).key) as String
+                let cat = ((category as AnyObject).key) as String
                 self.expenses[cat] = 0.0
                 self.getItems(cat: cat)
             }
@@ -54,7 +53,7 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
         childRef.observe(.value, with: {
             snapshot1 in
             for item in snapshot1.children {
-                var item1 = ((item as AnyObject).key) as String
+                let item1 = ((item as AnyObject).key) as String
                 self.getExpense(item: item1,cat: cat)
             }
         })
@@ -65,16 +64,20 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
         childRef.observe(.value, with: {
             snapshot1 in
                 if let dict = snapshot1.value as? NSDictionary{
-                var price = dict["price"] as? Float
-                var quantity = dict["quantity"] as? Float
-                var cost = price! * quantity!
+                let price = dict["price"] as? Float
+                let quantity = dict["quantity"] as? Float
+                let cost = price! * quantity!
+                self.totalExpense = self.totalExpense + cost
+                self.totalExpenseLabel.text = String(self.totalExpense)
                 self.expenses[cat] = self.expenses[cat]!+cost
                 self.categoryExpense.append(cost)
         }
+            
             DispatchQueue.main.async {
                 self.expensesTableView.reloadData()
             }
         })
+        
     }
 
 
@@ -166,12 +169,13 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "expenseCell", for: indexPath)
         
-        var key   = Array(self.expenses.keys)[indexPath.row]
-        var value = Array(self.expenses.values)[indexPath.row]
+        let key   = Array(self.expenses.keys)[indexPath.row]
+        let value = Array(self.expenses.values)[indexPath.row]
         
         // Configure the cell...
         cell.textLabel?.text = key
         cell.detailTextLabel?.text = String(describing: value)
+        
         return cell
     }
 
