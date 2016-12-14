@@ -28,18 +28,16 @@ class ItemPopupViewController: UIViewController {
         
         if (itemName != ""){
             
-        var price = priceLabel.text!
-        var quantity = quantityLabel.text!
-       
-        if (price == "")
+            var price:Float = Float(priceLabel.text!)!
+            var quantity:Float = Float(quantityLabel.text!)!
+        if (price == nil)
         {
-            price = "0"
-            if (quantity == ""){
-                quantity = "0"
+            price = 0
+            if (quantity == nil){
+                quantity = 0
             }
         }
-        
-        let dict: [String: String] = ["price": price, "quantity": quantity]
+        let dict: [String: Float] = ["price": price, "quantity": quantity]
         ref = FIRDatabase.database().reference(fromURL: rootURL)
         ref.child(itemName).setValue(dict)
             print("item pop: uploaded")

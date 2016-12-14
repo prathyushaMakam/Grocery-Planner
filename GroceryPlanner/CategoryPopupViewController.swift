@@ -24,10 +24,17 @@ class CategoryPopupViewController: UIViewController {
         let cate:String = categoryLabel.text!
         let itemName:String = itemLabel.text!
         
-        let price:String = priceLabel.text!
-        let quantity:String = quantityLabel.text!
+        var price:Float = Float(priceLabel.text!)!
+        var quantity:Float = Float(quantityLabel.text!)!
+        if (price == nil)
+        {
+            price = 0
+            if (quantity == nil){
+                quantity = 0
+            }
+        }
         
-        let dict: [String: String] = ["price": price, "quantity": quantity]
+        let dict: [String: Float] = ["price": price, "quantity": quantity]
         
         ref = FIRDatabase.database().reference(fromURL: rootURL)
         ref.child(cate).child(itemName).setValue(dict)

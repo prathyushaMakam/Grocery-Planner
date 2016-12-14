@@ -18,7 +18,7 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var hostView: CPTGraphHostingView!
     var rootRef: FIRDatabaseReference!
     var childRef: FIRDatabaseReference!
-    var rootUrl = "https://groceryplanner-e2a60.firebaseio.com/users/2/categories/"
+    var rootUrl = "https://groceryplanner-e2a60.firebaseio.com/users/1/categories/"
     var childUrl:String = ""
     var categoryExpense:[Float] = []
     var expenses: [String:Float] = [:]
@@ -77,7 +77,6 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
                 self.expensesTableView.reloadData()
             }
         })
-        
     }
 
     func initPlot() {

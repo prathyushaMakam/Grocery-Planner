@@ -458,7 +458,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3em-Kw-YtZ">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3em-Kw-YtZ">
+                                <frame key="frameInset" minX="30" minY="113" width="315" height="249"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKw-b9-WVi">
                                         <frame key="frameInset" minX="17" minY="23" width="88" height="28"/>
@@ -534,17 +536,9 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="315" id="RWc-G5-ajE"/>
-                                    <constraint firstAttribute="height" constant="249" id="eMm-vm-Q5x"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="3em-Kw-YtZ" firstAttribute="centerX" secondItem="1Lo-XQ-f0N" secondAttribute="centerX" id="dYp-pC-fCp"/>
-                            <constraint firstItem="3em-Kw-YtZ" firstAttribute="centerY" secondItem="1Lo-XQ-f0N" secondAttribute="centerY" id="mIV-f5-UAC"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="categoryLabel" destination="egc-cJ-Cx9" id="3KS-as-ouZ"/>
