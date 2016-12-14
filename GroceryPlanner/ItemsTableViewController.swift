@@ -25,15 +25,16 @@ class ItemsTableViewController: UITableViewController {
         print("item recieved: \(categoryValue)")
         rootUrl = ("https://groceryplanner-e2a60.firebaseio.com/users/1/categories/"+categoryValue)
         fetchItems()
-
     }
     
-    @IBAction func addItem(){
-        //listItems.append("a")
-        
-        tableView.reloadData()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "itemPopupSegue"){
+            let itemPopup = segue.destination as! ItemPopupViewController
+            itemPopup.category = categoryValue
+        }
     }
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

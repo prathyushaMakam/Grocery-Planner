@@ -7,14 +7,38 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 class CategoryPopupViewController: UIViewController {
 
+    let rootURL = "https://groceryplanner-e2a60.firebaseio.com/users/1/categories"
+    var ref: FIRDatabaseReference!
+
+    @IBOutlet weak var categoryLabel: UITextField!
+    @IBOutlet weak var itemLabel: UITextField!
+    @IBOutlet weak var priceLabel: UITextField!
+    @IBOutlet weak var quantityLabel: UITextField!
+    
     @IBAction func saveCategory(_ sender: AnyObject) {
+        let cate:String = categoryLabel.text!
+        let itemName:String = itemLabel.text!
+        
+        let price:String = priceLabel.text!
+        let quantity:String = quantityLabel.text!
+        
+        let dict: [String: String] = ["price": price, "quantity": quantity]
+        
+        ref = FIRDatabase.database().reference(fromURL: rootURL)
+        ref.child(cate).child(itemName).setValue(dict)
+        print("cat pop: uploaded")
+        self.dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func cancel(_ sender: AnyObject) {
         self.dismiss(animated: true, completion: nil)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,16 +49,4 @@ class CategoryPopupViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

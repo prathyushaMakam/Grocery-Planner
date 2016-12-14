@@ -18,7 +18,7 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var hostView: CPTGraphHostingView!
     var rootRef: FIRDatabaseReference!
     var childRef: FIRDatabaseReference!
-    var rootUrl = "https://groceryplanner-e2a60.firebaseio.com/users/1/categories/"
+    var rootUrl = "https://groceryplanner-e2a60.firebaseio.com/users/2/categories/"
     var childUrl:String = ""
     var categoryExpense:[Float] = []
     var expenses: [String:Float] = [:]
@@ -66,20 +66,19 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
                 if let dict = snapshot1.value as? NSDictionary{
                 let price = dict["price"] as? Float
                 let quantity = dict["quantity"] as? Float
+                print("exp: \(price)")
                 let cost = price! * quantity!
                 self.totalExpense = self.totalExpense + cost
                 self.totalExpenseLabel.text = String(self.totalExpense)
                 self.expenses[cat] = self.expenses[cat]!+cost
                 self.categoryExpense.append(cost)
         }
-            
             DispatchQueue.main.async {
                 self.expensesTableView.reloadData()
             }
         })
         
     }
-
 
     func initPlot() {
         configureHostView()
