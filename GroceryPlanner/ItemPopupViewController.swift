@@ -19,33 +19,29 @@ class ItemPopupViewController: UIViewController {
     @IBOutlet weak var priceLabel: UITextField!
     @IBOutlet weak var quantityLabel: UITextField!
     @IBOutlet weak var popupView: UIView!
+    @IBOutlet weak var errorLabel: UILabel!
     
     var keyboardActive = false
     
     @IBAction func saveItem(_ sender: AnyObject) {
-        rootURL = "https://groceryplanner-e2a60.firebaseio.com/users/1/categories/"+category+"/"
-        let itemName = itemLabel.text!
         
-        if (itemName != ""){
-            
-            var price:Float = Float(priceLabel.text!)!
-            var quantity:Float = Float(quantityLabel.text!)!
-        if (price == nil)
-        {
-            price = 0
-            if (quantity == nil){
-                quantity = 0
+        rootURL = "https://groceryplanner-e2a60.firebaseio.com/users/1/categories/"+category+"/"
+        if itemLabel.text != nil {
+            if priceLabel.text != "0" {
+                if quantityLabel.text != "0"{
+                    let itemName = itemLabel.text
+                    let price:Float = Float(priceLabel.text!)!
+                    let quantity = Float(quantityLabel.text!)!
+                    let dict: [String: Float] = ["price": price, "quantity": quantity]
+                    ref = FIRDatabase.database().reference(fromURL: rootURL)
+                    ref.child(itemName!).setValue(dict)
+                    self.dismiss(animated: true, completion: nil)
+                    
+                }
             }
         }
-        let dict: [String: Float] = ["price": price, "quantity": quantity]
-        ref = FIRDatabase.database().reference(fromURL: rootURL)
-        ref.child(itemName).setValue(dict)
-            print("item pop: uploaded")
-            self.dismiss(animated: true, completion: nil)
-        }
-        else{
-            self.dismiss(animated: true, completion: nil)
-        }
+        errorLabel.text = "Please enter data to save."
+        
     }
     
     @IBAction func cancel(_ sender: AnyObject) {
@@ -53,6 +49,8 @@ class ItemPopupViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        priceLabel.text = "0"
+        quantityLabel.text = "0"
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
