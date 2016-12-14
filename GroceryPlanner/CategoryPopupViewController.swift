@@ -12,34 +12,39 @@ import FirebaseDatabase
 
 class CategoryPopupViewController: UIViewController {
 
-    let rootURL = "https://groceryplanner-e2a60.firebaseio.com/users/1/categories"
+    let rootURL = "https://groceryplanner-e2a60.firebaseio.com/users/1/categories/"
     var ref: FIRDatabaseReference!
 
     @IBOutlet weak var categoryLabel: UITextField!
     @IBOutlet weak var itemLabel: UITextField!
     @IBOutlet weak var priceLabel: UITextField!
     @IBOutlet weak var quantityLabel: UITextField!
+    @IBOutlet weak var errorLabel: UILabel!
     
     @IBAction func saveCategory(_ sender: AnyObject) {
-        let cate:String = categoryLabel.text!
-        let itemName:String = itemLabel.text!
         
-        var price:Float = Float(priceLabel.text!)!
-        var quantity:Float = Float(quantityLabel.text!)!
-        if (price == nil)
-        {
-            price = 0
-            if (quantity == nil){
-                quantity = 0
+        
+        if categoryLabel.text != nil {
+            if itemLabel.text != nil {
+                if priceLabel.text != "0" {
+                    if quantityLabel.text != "0"{
+                        let categoryName = categoryLabel.text
+                        let itemName = itemLabel.text
+                        let price:Float = Float(priceLabel.text!)!
+                        let quantity = Float(quantityLabel.text!)!
+                        let dict: [String: Float] = ["price": price, "quantity": quantity]
+                        ref = FIRDatabase.database().reference(fromURL: rootURL)
+                        ref.child(categoryName!).child(itemName!).setValue(dict)
+                        self.dismiss(animated: true, completion: nil)
+                        
+                    }
+                }
+                        
             }
         }
-        
-        let dict: [String: Float] = ["price": price, "quantity": quantity]
-        
-        ref = FIRDatabase.database().reference(fromURL: rootURL)
-        ref.child(cate).child(itemName).setValue(dict)
+        errorLabel.text = "Please enter data to save."
         print("cat pop: uploaded")
-        self.dismiss(animated: true, completion: nil)
+        
     }
     
     @IBAction func cancel(_ sender: AnyObject) {
@@ -48,7 +53,8 @@ class CategoryPopupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        priceLabel.text = "0"
+        quantityLabel.text = "0"
         // Do any additional setup after loading the view.
     }
 
