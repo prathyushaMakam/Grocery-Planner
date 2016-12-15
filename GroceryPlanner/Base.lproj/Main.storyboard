@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5az-TF-P3l">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5az-TF-P3l">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -447,34 +447,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="85d-cn-Ptm">
-                                <frame key="frameInset" minY="42" width="375" height="473"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dz3-o8-szb" customClass="CPTGraphHostingView">
+                                <frame key="frameInset" minY="97" width="375" height="473"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dz3-o8-szb" customClass="CPTGraphHostingView">
-                                        <frame key="frameInset" width="375" height="473"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="exit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gu0-0R-aAE">
-                                                <frame key="frameInset" minX="120" minY="414" width="134" height="51"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.92972840314136129" green="0.92972840314136129" blue="0.92972840314136129" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="tintColor" red="0.88520533376963351" green="0.88520533376963351" blue="0.88520533376963351" alpha="0.24916888297872342" colorSpace="calibratedRGB"/>
-                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AY7-EW-0R9">
+                                        <frame key="frameInset" minX="164" minY="8" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Exit">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="exitFromGraph:" destination="VtV-pD-Ibg" eventType="touchUpInside" id="e14-eB-Dv0"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                            </stackView>
+                                <color key="backgroundColor" red="0.92972840314136129" green="0.92972840314136129" blue="0.92972840314136129" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.88520533376963351" green="0.88520533376963351" blue="0.88520533376963351" alpha="0.24916888297872342" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.94891400709219853" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="rgt-EM-w7H" firstAttribute="top" secondItem="dz3-o8-szb" secondAttribute="bottom" constant="152" id="Iil-Ja-zLw"/>
-                            <constraint firstItem="dz3-o8-szb" firstAttribute="top" secondItem="HF8-Vn-cFx" secondAttribute="bottom" constant="22" id="bJf-rK-thJ"/>
-                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="exitButton" destination="AY7-EW-0R9" id="fGv-Eq-cdw"/>
                         <outlet property="hostView" destination="dz3-o8-szb" id="ROI-TX-pIq"/>
                     </connections>
                 </viewController>

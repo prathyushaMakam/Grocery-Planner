@@ -11,6 +11,7 @@ import CorePlot
 
 class GraphPopUpViewController: UIViewController {
     
+    @IBOutlet weak var exitButton: UIButton!
     @IBOutlet weak var hostView: CPTGraphHostingView!
     var expenses: [String:Float] = [:]
     var categories:[String] = []
@@ -18,6 +19,7 @@ class GraphPopUpViewController: UIViewController {
     var total: Float = 0.0
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.exitButton.transform = CGAffineTransform(scaleX: 1, y: -1);
         for(key,value) in expenses {
             categories.append(key)
             amount.append(value)
@@ -30,6 +32,11 @@ class GraphPopUpViewController: UIViewController {
         super.viewDidLayoutSubviews()
         initPlot()
     }
+    
+    @IBAction func exitFromGraph(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
     func initPlot() {
         configureHostView()
