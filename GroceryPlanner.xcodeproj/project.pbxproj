@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4D162B391DFCB7E0000A324F /* ItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D162B381DFCB7E0000A324F /* ItemsTableViewController.swift */; };
+		4DA92D3E1E0246DC00A264A3 /* GraphPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA92D3D1E0246DC00A264A3 /* GraphPopUpViewController.swift */; };
 		4DE342881DFCD15A00887BD7 /* ItemPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE342871DFCD15A00887BD7 /* ItemPopupViewController.swift */; };
 		4DE3428A1DFCD89500887BD7 /* CategoryPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE342891DFCD89500887BD7 /* CategoryPopupViewController.swift */; };
 		760F9CC21DFA8EE2003115C9 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760F9CC11DFA8EE2003115C9 /* CategoryViewController.swift */; };
@@ -47,6 +48,7 @@
 		0C13A1EDB8CB4AB6252686E2 /* Pods-GroceryPlanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroceryPlanner.release.xcconfig"; path = "Pods/Target Support Files/Pods-GroceryPlanner/Pods-GroceryPlanner.release.xcconfig"; sourceTree = "<group>"; };
 		3695F12193E12F15A25B4F8B /* Pods_GroceryPlannerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GroceryPlannerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D162B381DFCB7E0000A324F /* ItemsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsTableViewController.swift; sourceTree = "<group>"; };
+		4DA92D3D1E0246DC00A264A3 /* GraphPopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphPopUpViewController.swift; sourceTree = "<group>"; };
 		4DE342871DFCD15A00887BD7 /* ItemPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemPopupViewController.swift; sourceTree = "<group>"; };
 		4DE342891DFCD89500887BD7 /* CategoryPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPopupViewController.swift; sourceTree = "<group>"; };
 		760F9CC11DFA8EE2003115C9 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				769A4D1C1DE2696F002375B7 /* AppDelegate.swift */,
 				769A4D1E1DE2696F002375B7 /* ViewController.swift */,
 				769A4D201DE2696F002375B7 /* Main.storyboard */,
+				4DA92D3D1E0246DC00A264A3 /* GraphPopUpViewController.swift */,
 				760F9CC11DFA8EE2003115C9 /* CategoryViewController.swift */,
 				4DE342891DFCD89500887BD7 /* CategoryPopupViewController.swift */,
 				4D162B381DFCB7E0000A324F /* ItemsTableViewController.swift */,
@@ -389,6 +392,7 @@
 				4DE342881DFCD15A00887BD7 /* ItemPopupViewController.swift in Sources */,
 				4D162B391DFCB7E0000A324F /* ItemsTableViewController.swift in Sources */,
 				768EFCD51DFBF72B006AF6D0 /* MyListViewController.swift in Sources */,
+				4DA92D3E1E0246DC00A264A3 /* GraphPopUpViewController.swift in Sources */,
 				760F9CC21DFA8EE2003115C9 /* CategoryViewController.swift in Sources */,
 				769A4D1D1DE2696F002375B7 /* AppDelegate.swift in Sources */,
 				4DE3428A1DFCD89500887BD7 /* CategoryPopupViewController.swift in Sources */,
