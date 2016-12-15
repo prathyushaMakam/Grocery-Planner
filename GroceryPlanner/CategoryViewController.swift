@@ -79,11 +79,13 @@ class CategoryViewController: UITableViewController {
         rootRef = FIRDatabase.database().reference(fromURL: rootUrl)
         rootRef.observe(.value, with: {
             snapshot in
+            var newCategories: [String] = []
             for category in snapshot.children {
                 print("cat: inside snapshot.children \(category)")
-                self.categoryNames.append((category as AnyObject).key)
+                newCategories.append((category as AnyObject).key)
                 print("cat: \(self.categoryNames) n \(self.categoryNames.count)")
             }
+            self.categoryNames = newCategories
             DispatchQueue.main.async {
                 print("cat: reload data")
                 self.categoryView.reloadData()

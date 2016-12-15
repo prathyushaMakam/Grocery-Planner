@@ -67,11 +67,13 @@ class ItemsTableViewController: UITableViewController {
         rootRef = FIRDatabase.database().reference(fromURL: rootUrl)
         rootRef.observe(.value, with: {
             snapshot in
+            var newItems:[String] = []
             for items in snapshot.children {
                 print("cat: inside snapshot.children \(items)")
-                self.listItems.append((items as AnyObject).key)
+                newItems.append((items as AnyObject).key)
                // print("cat: \(self.categoryNames) n \(self.categoryNames.count)")
             }
+            self.listItems = newItems
             DispatchQueue.main.async {
                 print("cat: reload data")
                 self.itemsTableView.reloadData()
