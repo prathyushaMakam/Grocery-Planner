@@ -88,13 +88,13 @@ class GraphPopUpViewController: UIViewController {
         
         // 3 - Configure border style
         let borderStyle = CPTMutableLineStyle()
-        borderStyle.lineColor = CPTColor.white()
+        borderStyle.lineColor = CPTColor.clear()
         borderStyle.lineWidth = 2.0
         pieChart.borderLineStyle = borderStyle
         
         // 4 - Configure text style
         let textStyle = CPTMutableTextStyle()
-        textStyle.color = CPTColor.white()
+        textStyle.color = CPTColor.black()
         textStyle.textAlignment = .center
         pieChart.labelTextStyle = textStyle
         
@@ -103,8 +103,31 @@ class GraphPopUpViewController: UIViewController {
     }
     
     func configureLegend() {
+        // 1 - Get graph instance
+        guard let graph = hostView.hostedGraph else { return }
+        
+        // 2 - Create legend
+        let theLegend = CPTLegend(graph: graph)
+        
+        // 3 - Configure legend
+        theLegend.numberOfColumns = 1
+        theLegend.fill = CPTFill(color: CPTColor.white())
+        let textStyle = CPTMutableTextStyle()
+        textStyle.fontSize = 8
+        theLegend.textStyle = textStyle
+        
+        // 4 - Add legend to graph
+        graph.legend = theLegend
+        if view.bounds.width > view.bounds.height {
+            graph.legendAnchor = .right
+            graph.legendDisplacement = CGPoint(x: -20, y: 0.0)
+            
+        } else {
+            graph.legendAnchor = .bottomRight
+            graph.legendDisplacement = CGPoint(x: -8.0, y: 8.0)
+        }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -146,7 +169,8 @@ extension GraphPopUpViewController: CPTPieChartDataSource, CPTPieChartDelegate {
     }
     
     func legendTitle(for pieChart: CPTPieChart, record idx: UInt) -> String? {
-        return nil
-    }  
+        return categories[Int(idx)]
+    }
+  
 }
 
