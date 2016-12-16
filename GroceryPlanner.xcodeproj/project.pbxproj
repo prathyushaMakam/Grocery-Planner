@@ -24,6 +24,8 @@
 		769A4D3D1DE2696F002375B7 /* GroceryPlannerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769A4D3C1DE2696F002375B7 /* GroceryPlannerUITests.swift */; };
 		769D413E1DF9348800551A6B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 769D413D1DF9348800551A6B /* AdSupport.framework */; };
 		76BDF39A1DFFD1790042015E /* MyListPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BDF3991DFFD1790042015E /* MyListPopupViewController.swift */; };
+		76E6D0431E03C158006F8015 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E6D0421E03C158006F8015 /* RegisterViewController.swift */; };
+		76E6D0451E03D19C006F8015 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E6D0441E03D19C006F8015 /* TabBarViewController.swift */; };
 		F335CA1C47B9AA5ACE16B0EC /* Pods_GroceryPlanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 855F6037C7A9C091E176FC77 /* Pods_GroceryPlanner.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +73,8 @@
 		769A4D3E1DE2696F002375B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		769D413D1DF9348800551A6B /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		76BDF3991DFFD1790042015E /* MyListPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyListPopupViewController.swift; sourceTree = "<group>"; };
+		76E6D0421E03C158006F8015 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		76E6D0441E03D19C006F8015 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		855F6037C7A9C091E176FC77 /* Pods_GroceryPlanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GroceryPlanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC5D037BFEEDC8EE7DFCDDD8 /* Pods_GroceryPlannerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GroceryPlannerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C65D9F76FB7057D2A405058C /* Pods-GroceryPlanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroceryPlanner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GroceryPlanner/Pods-GroceryPlanner.debug.xcconfig"; sourceTree = "<group>"; };
@@ -139,16 +143,18 @@
 			children = (
 				767D81AD1DF92902000AEAB1 /* GroceryPlanner.entitlements */,
 				769A4D1C1DE2696F002375B7 /* AppDelegate.swift */,
-				769A4D1E1DE2696F002375B7 /* ViewController.swift */,
 				769A4D201DE2696F002375B7 /* Main.storyboard */,
+				769A4D1E1DE2696F002375B7 /* ViewController.swift */,
+				76E6D0421E03C158006F8015 /* RegisterViewController.swift */,
+				76E6D0441E03D19C006F8015 /* TabBarViewController.swift */,
 				760F9CC11DFA8EE2003115C9 /* CategoryViewController.swift */,
 				4DE342891DFCD89500887BD7 /* CategoryPopupViewController.swift */,
 				4D162B381DFCB7E0000A324F /* ItemsTableViewController.swift */,
 				4DE342871DFCD15A00887BD7 /* ItemPopupViewController.swift */,
-				768EFCD41DFBF72B006AF6D0 /* MyListViewController.swift */,
-				76BDF3991DFFD1790042015E /* MyListPopupViewController.swift */,
 				768EFCD21DFBB0F8006AF6D0 /* ExpensesViewController.swift */,
 				4DA92D3D1E0246DC00A264A3 /* GraphPopUpViewController.swift */,
+				768EFCD41DFBF72B006AF6D0 /* MyListViewController.swift */,
+				76BDF3991DFFD1790042015E /* MyListPopupViewController.swift */,
 				769A4D231DE2696F002375B7 /* Assets.xcassets */,
 				769A4D251DE2696F002375B7 /* LaunchScreen.storyboard */,
 				767D81AB1DF908F8000AEAB1 /* GoogleService-Info.plist */,
@@ -387,8 +393,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				769A4D1F1DE2696F002375B7 /* ViewController.swift in Sources */,
+				76E6D0431E03C158006F8015 /* RegisterViewController.swift in Sources */,
 				768EFCD31DFBB0F8006AF6D0 /* ExpensesViewController.swift in Sources */,
 				76BDF39A1DFFD1790042015E /* MyListPopupViewController.swift in Sources */,
+				76E6D0451E03D19C006F8015 /* TabBarViewController.swift in Sources */,
 				4DE342881DFCD15A00887BD7 /* ItemPopupViewController.swift in Sources */,
 				4D162B391DFCB7E0000A324F /* ItemsTableViewController.swift in Sources */,
 				768EFCD51DFBF72B006AF6D0 /* MyListViewController.swift in Sources */,

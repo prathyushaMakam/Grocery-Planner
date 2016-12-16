@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GroceryPlanner/CategoryViewController.swift"
-            timestampString = "503475024.570347"
+            timestampString = "503567209.375855"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "CategoryViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -95,7 +95,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "48"
             endingLineNumber = "48"
-            landmarkName = "getCategories()"
+            landmarkName = "getItems(cat:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

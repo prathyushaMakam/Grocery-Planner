@@ -7,6 +7,7 @@ target 'GroceryPlanner' do
 
   # Pods for GroceryPlanner
   pod 'Firebase/Core'
+  pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'CorePlot', '~> 2.2'
 end

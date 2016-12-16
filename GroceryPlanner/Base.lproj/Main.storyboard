@@ -1,15 +1,72 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5az-TF-P3l">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rQn-xQ-3v8">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--View Controller-->
+        <scene sceneID="tjw-CS-C9J">
+            <objects>
+                <viewController storyboardIdentifier="Login" id="rQn-xQ-3v8" customClass="ViewController" customModule="GroceryPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uBV-nL-N8H"/>
+                        <viewControllerLayoutGuide type="bottom" id="JB9-EY-e3Q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="emL-fF-g73">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X7F-fp-vva">
+                                <frame key="frameInset" minX="16" minY="287" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8EV-Sf-cz0">
+                                <frame key="frameInset" minX="16" minY="222" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sk2-2k-Ttm">
+                                <frame key="frameInset" minX="13" minY="402" width="348" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Register"/>
+                                <connections>
+                                    <segue destination="Z36-zM-LWD" kind="presentation" id="dp8-ky-XlJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TpK-WO-xbU">
+                                <frame key="frameInset" minX="13" minY="349" width="348" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="loginAction:" destination="rQn-xQ-3v8" eventType="touchUpInside" id="x9Q-E4-SQY"/>
+                                    <segue destination="5az-TF-P3l" kind="presentation" id="vTc-9T-hpS"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextbox" destination="8EV-Sf-cz0" id="2RM-7T-chG"/>
+                        <outlet property="passwordTextbox" destination="X7F-fp-vva" id="ylI-8u-5yA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qYR-Gv-1dH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1367.2" y="-258.62068965517244"/>
+        </scene>
+        <!--Tab Bar View Controller-->
         <scene sceneID="3Vs-Q7-DV1">
             <objects>
-                <tabBarController id="5az-TF-P3l" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Home" id="5az-TF-P3l" customClass="TabBarViewController" customModule="GroceryPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="lyP-aq-JL7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -24,6 +81,61 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rfH-Zq-Xuw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2219" y="-258"/>
+        </scene>
+        <!--Register View Controller-->
+        <scene sceneID="I7J-lL-doe">
+            <objects>
+                <viewController id="Z36-zM-LWD" customClass="RegisterViewController" customModule="GroceryPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hyR-dD-MXn"/>
+                        <viewControllerLayoutGuide type="bottom" id="6FD-f1-zSh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GrC-vi-ySO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DoA-sG-Gmn">
+                                <frame key="frameInset" minX="16" minY="238" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cx0-tv-GGG">
+                                <frame key="frameInset" minX="16" minY="300" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4z4-yr-sRA">
+                                <frame key="frameInset" minX="145" minY="375" width="84" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Register"/>
+                                <connections>
+                                    <action selector="createAccount:" destination="Z36-zM-LWD" eventType="touchUpInside" id="oYb-mA-8pY"/>
+                                    <segue destination="5az-TF-P3l" kind="presentation" id="4MF-Dl-SFE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cH-0q-hjV">
+                                <frame key="frameInset" minX="149" minY="438" width="76" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <segue destination="rQn-xQ-3v8" kind="presentation" id="xho-zf-iOu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="DoA-sG-Gmn" id="eLN-TL-a9n"/>
+                        <outlet property="passwordTextField" destination="cx0-tv-GGG" id="UzX-vZ-ePk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vrV-Au-a7o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1831" y="517"/>
         </scene>
         <!--Categories-->
         <scene sceneID="wMf-mI-TPZ">
@@ -61,6 +173,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Categories" id="BLY-Rk-xnv">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="eVU-b0-xFv">
+                            <connections>
+                                <action selector="logoutButton:" destination="92Q-SL-Mzn" id="Bfn-hX-Aiq"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="+" id="nJo-70-pyj">
                             <connections>
                                 <segue destination="uoN-j2-fOA" kind="presentation" id="50H-oc-bI2"/>
@@ -269,6 +386,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My List" id="pGj-94-mME">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="El8-5Z-2nc">
+                            <connections>
+                                <action selector="logoutButton:" destination="zEn-9U-8AY" id="t0p-TY-Uma"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="+" id="9R2-lx-cw6">
                             <connections>
                                 <segue destination="Z8h-Sd-oRQ" kind="presentation" identifier="addNewItem" id="5Si-I6-wzz"/>
@@ -420,6 +542,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Expenses" id="q78-0T-C5H">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="jHf-Ax-mg4">
+                            <connections>
+                                <action selector="logoutButton:" destination="B88-At-srb" id="bDH-N2-bib"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Graph" id="xef-4C-CrW">
                             <connections>
                                 <segue destination="VtV-pD-Ibg" kind="presentation" id="E0u-gd-c2r"/>
@@ -649,4 +776,7 @@
             <point key="canvasLocation" x="4137" y="57"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="4MF-Dl-SFE"/>
+    </inferredMetricsTieBreakers>
 </document>
