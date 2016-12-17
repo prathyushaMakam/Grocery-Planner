@@ -8,6 +8,8 @@
 
 import UIKit
 import CorePlot
+import FirebaseAuth
+
 
 class GraphPopUpViewController: UIViewController {
     

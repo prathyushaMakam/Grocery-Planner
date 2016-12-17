@@ -114,7 +114,6 @@
                                 <state key="normal" title="Register"/>
                                 <connections>
                                     <action selector="createAccount:" destination="Z36-zM-LWD" eventType="touchUpInside" id="oYb-mA-8pY"/>
-                                    <segue destination="5az-TF-P3l" kind="presentation" id="4MF-Dl-SFE"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cH-0q-hjV">
@@ -122,7 +121,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
-                                    <segue destination="rQn-xQ-3v8" kind="presentation" id="xho-zf-iOu"/>
+                                    <action selector="goToLogin:" destination="Z36-zM-LWD" eventType="touchUpInside" id="zU7-iA-uQ4"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -131,6 +130,8 @@
                     <connections>
                         <outlet property="emailTextField" destination="DoA-sG-Gmn" id="eLN-TL-a9n"/>
                         <outlet property="passwordTextField" destination="cx0-tv-GGG" id="UzX-vZ-ePk"/>
+                        <outlet property="registerView" destination="GrC-vi-ySO" id="kaF-5K-BNW"/>
+                        <segue destination="5az-TF-P3l" kind="show" identifier="toHome" id="k4u-0g-IGg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vrV-Au-a7o" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -777,6 +778,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4MF-Dl-SFE"/>
+        <segue reference="k4u-0g-IGg"/>
     </inferredMetricsTieBreakers>
 </document>

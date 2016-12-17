@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GroceryPlanner/CategoryViewController.swift"
-            timestampString = "503567209.375855"
+            timestampString = "503706330.551771"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "CategoryViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GroceryPlanner/ItemsTableViewController.swift"
-            timestampString = "503137213.033977"
+            timestampString = "503706330.551771"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GroceryPlanner/CategoryViewController.swift"
-            timestampString = "503396746.498189"
+            timestampString = "503706330.551771"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "fetchCategories()"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GroceryPlanner/CategoryViewController.swift"
-            timestampString = "503396746.498189"
+            timestampString = "503706330.551771"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "CategoryViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GroceryPlanner/ExpensesViewController.swift"
-            timestampString = "503302663.765368"
+            timestampString = "503706330.551771"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "getItems(cat:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,13 +106,91 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GroceryPlanner/CategoryPopupViewController.swift"
-            timestampString = "503394632.114076"
+            timestampString = "503706330.551771"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "saveCategory(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GroceryPlanner/RegisterViewController.swift"
+            timestampString = "503711115.324483"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "RegisterViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GroceryPlanner.RegisterViewController.passwordTextField.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UITextField&gt;"
+                  moduleName = "GroceryPlanner"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prathyusha/Documents/IOS%20Apps/GroceryPlanner/GroceryPlanner/RegisterViewController.swift"
+                  timestampString = "503656694.109477"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "27">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GroceryPlanner.RegisterViewController.passwordTextField.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UITextField&gt;"
+                  moduleName = "GroceryPlanner"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prathyusha/Documents/IOS%20Apps/GroceryPlanner/GroceryPlanner/RegisterViewController.swift"
+                  timestampString = "503656694.11381"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "42">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GroceryPlanner.RegisterViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; GroceryPlanner.RegisterViewController"
+                  moduleName = "GroceryPlanner"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prathyusha/Documents/IOS%20Apps/GroceryPlanner/GroceryPlanner/RegisterViewController.swift"
+                  timestampString = "503656694.116223"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "70">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GroceryPlanner.RegisterViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;GroceryPlanner.RegisterViewController&gt;"
+                  moduleName = "GroceryPlanner"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prathyusha/Documents/IOS%20Apps/GroceryPlanner/GroceryPlanner/RegisterViewController.swift"
+                  timestampString = "503656694.117957"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "31">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

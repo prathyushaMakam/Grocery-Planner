@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FirebaseAuth
+
 
 class CategoryViewController: UITableViewController {
     
@@ -16,13 +18,16 @@ class CategoryViewController: UITableViewController {
     var rootRef: FIRDatabaseReference!
     var categoryNames: [String] = []
     var valToPass:String!
-    var rootUrl = "https://groceryplanner-e2a60.firebaseio.com/users/1/categories/"
-
+    var uID:String!
+    var rootUrl:String!
+    
     override func viewDidLoad() {
         print("cat: b4 viewLoad \(categoryNames.count)")
         
         super.viewDidLoad()
         print("cat: after viewLoad and calling fetch \(categoryNames.count)")
+        print("UID cat: \(uID)")
+        rootUrl = "https://groceryplanner-e2a60.firebaseio.com/users/"+uID+"/categories/"
         for i in categoryNames{
             print("cat: \(i)")
         }
@@ -68,12 +73,14 @@ class CategoryViewController: UITableViewController {
             let itemView = nav.topViewController as! ItemsTableViewController
             print("item to sent: \(valToPass)")
             itemView.categoryValue = valToPass
+            itemView.uID = uID
             print("item itemView.: \(itemView.categoryValue) ")
         }
     }
     
     func fetchCategories()
     {
+        
         print("cat: inside calling fetch \(categoryNames.count)")
 
         rootRef = FIRDatabase.database().reference(fromURL: rootUrl)

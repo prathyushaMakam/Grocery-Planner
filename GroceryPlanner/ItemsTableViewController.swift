@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FirebaseAuth
+
 
 
 class ItemsTableViewController: UITableViewController {
@@ -17,13 +19,14 @@ class ItemsTableViewController: UITableViewController {
     var rootRef: FIRDatabaseReference!
     var listItems:[String] = []
     var categoryValue:String!
+    var uID:String!
     var rootUrl:String!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("item recieved: \(categoryValue)")
-        rootUrl = ("https://groceryplanner-e2a60.firebaseio.com/users/1/categories/"+categoryValue)
+        rootUrl = ("https://groceryplanner-e2a60.firebaseio.com/users/"+uID+"/categories/"+categoryValue)
         fetchItems()
     }
     

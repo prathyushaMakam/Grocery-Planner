@@ -8,12 +8,18 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
 import FirebaseAuth
 
 class RegisterViewController: UIViewController {
+    @IBOutlet weak var registerView: UIView!
 
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    var userID:String!
+    var rootURL = "https://groceryplanner-e2a60.firebaseio.com/users/"
+    var ref:FIRDatabaseReference!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,36 +31,66 @@ class RegisterViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func createAccount(_ sender: AnyObject) {
-        if emailTextField.text == "" {
-            let alertController = UIAlertController(title: "Error", message: "Please enter your email and password", preferredStyle: .alert)
-            
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            
-            present(alertController, animated: true, completion: nil)
-            
-        }
-        else{
-            FIRAuth.auth()?.createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user:FIRUser?, error) in
-                
-                if error == nil {
-                    print("You have successfully signed up")
-                    //Goes to the Setup page which lets the user take a photo for their profile picture and also chose a username
-                    
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "Home")
-                    self.present(vc!, animated: true, completion: nil)
-                    
-                } else {
-                    let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                    
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(defaultAction)
-                    
-                    self.present(alertController, animated: true, completion: nil)
-
+    @IBAction func createAccount(_ sender: UIButton) {
+        
+        let email = emailTextField.text
+        let password = passwordTextField.text
+        
+        FIRAuth.auth()?.createUser(withEmail: email!, password: password!, completion: { (user, error) in
+            if let error = error {
+                if let errCode = FIRAuthErrorCode(rawValue: error._code) {
+                    switch errCode {
+                    case .errorCodeInvalidEmail:
+                        self.showAlert("Enter a valid email.")
+                    case .errorCodeEmailAlreadyInUse:
+                        self.showAlert("Email already in use.")
+                    default:
+                        self.showAlert("Error: \(error.localizedDescription)")
+                    }
                 }
+                return
             }
+            self.userID = user?.uid
+            print("UserID inside Create: \(self.userID)")
+            self.setCredentials()
+            self.signIn()
+        })
+    }
+    
+    
+    func showAlert(_ message: String) {
+        let alertController = UIAlertController(title: "To Do App", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func setCredentials() {
+        
+        let dict: [String: String] = ["username": emailTextField.text!, "password": passwordTextField.text!]
+        ref = FIRDatabase.database().reference(fromURL: rootURL)
+        ref.child(userID).setValue(dict)
+    }
+    
+    func signIn() {
+        print("UserID sigin: \(self.userID)")
+        performSegue(withIdentifier: "toHome", sender: self)
+    }
+
+    
+    @IBAction func goToLogin(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: {})
+    }
+    
+    
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "toHome"){
+            let tab = segue.destination as! UITabBarController
+            let nav = tab.viewControllers?.first as! UINavigationController
+            let sendID = nav.topViewController as! CategoryViewController
+
+            print("UID reg1: \(self.userID)")
+
+            sendID.uID = userID
         }
     }
 }
