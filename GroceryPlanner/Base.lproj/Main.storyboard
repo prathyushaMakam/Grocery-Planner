@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rQn-xQ-3v8">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rQn-xQ-3v8">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -42,7 +42,6 @@
                                 </state>
                                 <connections>
                                     <action selector="loginAction:" destination="rQn-xQ-3v8" eventType="touchUpInside" id="x9Q-E4-SQY"/>
-                                    <segue destination="5az-TF-P3l" kind="presentation" id="vTc-9T-hpS"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Need an account? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETX-BR-Xog">
@@ -58,7 +57,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Register"/>
                                 <connections>
-                                    <segue destination="Z36-zM-LWD" kind="presentation" id="dp8-ky-XlJ"/>
+                                    <segue destination="Z36-zM-LWD" kind="presentation" id="5To-9y-EdT"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -67,6 +66,7 @@
                     <connections>
                         <outlet property="emailTextbox" destination="8EV-Sf-cz0" id="2RM-7T-chG"/>
                         <outlet property="passwordTextbox" destination="X7F-fp-vva" id="ylI-8u-5yA"/>
+                        <segue destination="5az-TF-P3l" kind="show" identifier="loginToTabView" id="RkI-eu-nwE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qYR-Gv-1dH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -799,6 +799,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="vTc-9T-hpS"/>
+        <segue reference="k4u-0g-IGg"/>
     </inferredMetricsTieBreakers>
 </document>

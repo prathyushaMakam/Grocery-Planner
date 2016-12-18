@@ -15,7 +15,6 @@ import FirebaseAuth
 class MyListViewController: UITableViewController{
 
     @IBOutlet weak var myListTableView: UITableView!
-    var newListItem:String!
     var rootRef: FIRDatabaseReference!
     var childRef: FIRDatabaseReference!
     var listItems: [String] = []
@@ -26,11 +25,14 @@ class MyListViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         rootUrl = "https://groceryplanner-e2a60.firebaseio.com/users/"+uID+"/"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         getCategories()
-        print("list: \(newListItem)")
     }
     
     func getCategories(){
+        listItems = []
         // get category for each user
         rootRef = FIRDatabase.database().reference(fromURL: rootUrl)
         rootRef.child("categories").observeSingleEvent(of: .value, with: { snapshot in
@@ -52,7 +54,7 @@ class MyListViewController: UITableViewController{
     
     func getItems(){
         self.childRef = FIRDatabase.database().reference(fromURL: self.childUrl)
-        self.childRef.observe(.value, with: {
+        self.childRef.observeSingleEvent(of:.value, with: {
             snapshot1 in
             for item in snapshot1.children {
                 self.listItems.append((item as AnyObject).key)

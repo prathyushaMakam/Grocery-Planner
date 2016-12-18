@@ -22,10 +22,10 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -51,7 +51,6 @@ class RegisterViewController: UIViewController {
                 return
             }
             self.userID = user?.uid
-            print("UserID inside Create: \(self.userID)")
             self.setCredentials()
             self.signIn()
         })
@@ -75,14 +74,14 @@ class RegisterViewController: UIViewController {
         print("UserID sigin: \(self.userID)")
         performSegue(withIdentifier: "toHome", sender: self)
     }
-
+    
     
     @IBAction func goToLogin(_ sender: AnyObject) {
         self.dismiss(animated: true, completion: {})
     }
     
     
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "toHome"){
             let tab = segue.destination as! UITabBarController
             let nav = tab.viewControllers?.first as! UINavigationController
@@ -91,9 +90,9 @@ class RegisterViewController: UIViewController {
             let sendID = nav.topViewController as! CategoryViewController
             let sendUID = nav1.topViewController as! ExpensesViewController
             let senduID = nav2.topViewController as! MyListViewController
-
+            
             print("UID reg1: \(self.userID)")
-
+            
             sendID.uID = userID
             sendUID.uID = userID
             senduID.uID = userID

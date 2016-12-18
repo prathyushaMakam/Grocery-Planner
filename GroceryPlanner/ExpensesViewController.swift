@@ -19,8 +19,8 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
   
     var rootRef: FIRDatabaseReference!
     var childRef: FIRDatabaseReference!
+    var expenseRef: FIRDatabaseReference!
     var rootUrl:String!
-    var childUrl:String = ""
     var uID:String!
     var expenses: [String:Float] = [:]
     var totalExpense:Float = 0.0
@@ -31,54 +31,95 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         print("UID EXp: \(uID)")
         rootUrl = "https://groceryplanner-e2a60.firebaseio.com/users/"+uID+"/categories/"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         getCategories()
     }
     
-
-    
     func getCategories(){
-        // get category for each user
+        self.totalExpense = 0
+        
         rootRef = FIRDatabase.database().reference(fromURL: rootUrl)
-        rootRef.observe(.value, with: {
-            snapshot in
-            for category in snapshot.children {
-                let cat = ((category as AnyObject).key) as String
-                self.expenses[cat] = 0.0
-                self.getItems(cat: cat)
+        rootRef.observeSingleEvent(of: .value, with: { snapshot in
+            if let result = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                print("exp: getCategories handler enter\n")
+                for child in result {
+                    // create the child url
+                    let cat = ((child as AnyObject).key) as String
+                    print("exp: in cat = \(cat)\n")
+                    self.expenses[cat] = 0.0
+                    print("exp: in cat expenses[\(cat)] = \(self.expenses[cat])\n")
+                    let childUrl = self.rootUrl+child.key+"/"
+                    print("exp: in cat childUrl = \(childUrl)\n")
+                    // get item under each category
+                    self.getItems1(cat: cat, url: childUrl)
+                }
+            } else {
+                print("no results\n")
             }
-        })
-    }
-    
-    func getItems(cat:String){
-        childRef = FIRDatabase.database().reference(fromURL: rootUrl+"\(cat)/")
-        childRef.observe(.value, with: {
-            snapshot1 in
-            for item in snapshot1.children {
-                let item1 = ((item as AnyObject).key) as String
-                self.getExpense(item: item1,cat: cat)
-            }
-        })
-    }
-    
-    func getExpense(item:String,cat:String){
-        childRef = FIRDatabase.database().reference(fromURL: rootUrl+cat+item)
-        childRef.observe(.value, with: {
-            snapshot1 in
-                if let dict = snapshot1.value as? NSDictionary{
-                let price = dict["price"] as? Float
-                let quantity = dict["quantity"] as? Float
-                let cost = price! * quantity!
-                self.totalExpense = self.totalExpense + cost
-                self.totalExpenseLabel.text = String(self.totalExpense)
-                self.expenses[cat] = self.expenses[cat]!+cost
-                
+        }) { (error) in
+            print(error.localizedDescription)
         }
+    }
+    
+    //get all items under all categories
+    func getItems1(cat:String, url:String){
+        print("exp: in item childUrl = \(url)\n")
+        childRef = FIRDatabase.database().reference(fromURL: url)
+        childRef.observeSingleEvent(of: .value, with: {snapshot in
+            print("exp: getItems handler enter\n")
+            if let result = snapshot.children.allObjects as? [FIRDataSnapshot]{
+                for child in result {
+                    let item1 = ((child as AnyObject).key) as String
+                    print("exp: in item = \(item1)\n")
+                    let expenseUrl = url+child.key+"/"
+                    print("exp: in item self.expenseUrl= \(expenseUrl)\n")
+                    self.getExpense(item:item1,cat:cat, expenseUrl:expenseUrl)
+                }
+            }
+            else {
+                print("no results\n")
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+    }
+    
+    func getExpense(item:String,cat:String, expenseUrl:String){
+        
+        print("exp: in expense expenseUrl = \(expenseUrl)\n")
+        
+        expenseRef = FIRDatabase.database().reference(fromURL: expenseUrl)
+        expenseRef.observeSingleEvent(of:.value, with: {snapshot in
+            print("exp: getExpense handler enter\n")
+            if let dict = snapshot.value as? NSDictionary{
+                print("exp: in expense dict = \(dict) \n")
+                let price = dict["price"] as? Float
+                print("exp: in expense price = \(price)\n")
+                let quantity = dict["quantity"] as? Float
+                print("exp: in expense quantity = \(quantity)\n")
+                let cost = price! * quantity!
+                print("exp: in expense cost = \(cost)\n")
+                self.totalExpense = self.totalExpense + cost
+                print("exp: in expense totalExpense = \(self.totalExpense)\n")
+                self.expenses[cat] = self.expenses[cat]!+cost
+                print("exp: in expense self.expenses[\(cat)] =\(self.expenses[cat])\n")
+                self.totalExpenseLabel.text = String(self.totalExpense)
+            }
+            else {
+                print("no results\n")
+            }
+            
             DispatchQueue.main.async {
                 self.expensesTableView.reloadData()
             }
-        })
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
     }
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
