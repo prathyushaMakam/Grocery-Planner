@@ -17,6 +17,7 @@ class ItemPopupViewController: UIViewController {
     var rootURL:String!
     var ref: FIRDatabaseReference!
     var category:String!
+    var uID:String!
     @IBOutlet weak var itemLabel: UITextField!
     @IBOutlet weak var priceLabel: UITextField!
     @IBOutlet weak var quantityLabel: UITextField!
@@ -25,9 +26,16 @@ class ItemPopupViewController: UIViewController {
     
     var keyboardActive = false
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        priceLabel.text = "0"
+        quantityLabel.text = "0"
+        print("itemPopUp \(uID)")
+    }
+    
     @IBAction func saveItem(_ sender: AnyObject) {
         
-        rootURL = "https://groceryplanner-e2a60.firebaseio.com/users/1/categories/"+category+"/"
+        rootURL = "https://groceryplanner-e2a60.firebaseio.com/users/"+uID+"/categories/"+category+"/"
         if itemLabel.text != nil {
             if priceLabel.text != "0" {
                 if quantityLabel.text != "0"{
@@ -48,11 +56,6 @@ class ItemPopupViewController: UIViewController {
     
     @IBAction func cancel(_ sender: AnyObject) {
         dismiss(animated: true, completion: nil)
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        priceLabel.text = "0"
-        quantityLabel.text = "0"
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {

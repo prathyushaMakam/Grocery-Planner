@@ -76,6 +76,11 @@ class CategoryViewController: UITableViewController {
             itemView.uID = uID
             print("item itemView.: \(itemView.categoryValue) ")
         }
+        
+        if(segue.identifier == "categoryPopupSegue"){
+            let catPopupView = segue.destination as! CategoryPopupViewController
+            catPopupView.uID = uID
+        }
     }
     
     func fetchCategories()
@@ -141,14 +146,8 @@ class CategoryViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
+    
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }

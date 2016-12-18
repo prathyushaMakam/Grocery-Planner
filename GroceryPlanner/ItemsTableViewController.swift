@@ -34,6 +34,7 @@ class ItemsTableViewController: UITableViewController {
         if(segue.identifier == "itemPopupSegue"){
             let itemPopup = segue.destination as! ItemPopupViewController
             itemPopup.category = categoryValue
+            itemPopup.uID = uID
         }
     }
     
