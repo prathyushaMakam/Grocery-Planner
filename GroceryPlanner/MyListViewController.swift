@@ -19,11 +19,13 @@ class MyListViewController: UITableViewController{
     var rootRef: FIRDatabaseReference!
     var childRef: FIRDatabaseReference!
     var listItems: [String] = []
-    var rootUrl = "https://groceryplanner-e2a60.firebaseio.com/users/1/"
+    var rootUrl:String!
     var childUrl:String = ""
+    var uID:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        rootUrl = "https://groceryplanner-e2a60.firebaseio.com/users/"+uID+"/"
         getCategories()
         print("list: \(newListItem)")
     }

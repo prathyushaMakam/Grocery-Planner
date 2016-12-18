@@ -19,8 +19,9 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
   
     var rootRef: FIRDatabaseReference!
     var childRef: FIRDatabaseReference!
-    var rootUrl = "https://groceryplanner-e2a60.firebaseio.com/users/1/categories/"
+    var rootUrl:String!
     var childUrl:String = ""
+    var uID:String!
     var expenses: [String:Float] = [:]
     var totalExpense:Float = 0.0
 
@@ -28,6 +29,8 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("UID EXp: \(uID)")
+        rootUrl = "https://groceryplanner-e2a60.firebaseio.com/users/"+uID+"/categories/"
         getCategories()
     }
     
@@ -58,7 +61,7 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func getExpense(item:String,cat:String){
-        childRef = FIRDatabase.database().reference(fromURL: rootUrl+"\(cat)/"+"\(item)/")
+        childRef = FIRDatabase.database().reference(fromURL: rootUrl+cat+item)
         childRef.observe(.value, with: {
             snapshot1 in
                 if let dict = snapshot1.value as? NSDictionary{
