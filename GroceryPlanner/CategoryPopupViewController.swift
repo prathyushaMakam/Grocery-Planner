@@ -13,8 +13,9 @@ import FirebaseAuth
 
 
 class CategoryPopupViewController: UIViewController {
-
-    let rootURL = "https://groceryplanner-e2a60.firebaseio.com/users/1/categories/"
+    
+    var uID:String!
+    var rootURL:String = ""
     var ref: FIRDatabaseReference!
 
     @IBOutlet weak var categoryLabel: UITextField!
@@ -22,6 +23,15 @@ class CategoryPopupViewController: UIViewController {
     @IBOutlet weak var priceLabel: UITextField!
     @IBOutlet weak var quantityLabel: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
+ 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        priceLabel.text = "0"
+        quantityLabel.text = "0"
+        print("CategoryPopUp \(uID)")
+        rootURL = "https://groceryplanner-e2a60.firebaseio.com/users/"+uID+"/categories/"
+        // Do any additional setup after loading the view.
+    }
     
     @IBAction func saveCategory(_ sender: AnyObject) {
         
@@ -53,12 +63,7 @@ class CategoryPopupViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        priceLabel.text = "0"
-        quantityLabel.text = "0"
-        // Do any additional setup after loading the view.
-    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
