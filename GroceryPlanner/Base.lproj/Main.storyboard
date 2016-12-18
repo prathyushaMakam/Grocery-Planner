@@ -37,7 +37,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.13807409770000001" green="0.17533039149999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Sign In">
+                                <state key="normal" title="Log In">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -799,6 +799,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="k4u-0g-IGg"/>
+        <segue reference="vTc-9T-hpS"/>
     </inferredMetricsTieBreakers>
 </document>
