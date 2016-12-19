@@ -22,7 +22,7 @@ class GraphPopUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.exitButton.transform = CGAffineTransform(scaleX: 1, y: -1);
+        //self.exitButton.transform = CGAffineTransform(scaleX: 1, y: -1);
         for(key,value) in expenses {
             categories.append(key)
             amount.append(value)

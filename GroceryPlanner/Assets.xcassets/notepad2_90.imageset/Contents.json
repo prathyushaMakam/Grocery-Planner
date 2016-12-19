@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "notepad2_30.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "notepad2_60.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "money@2x.png",
+      "filename" : "notepad2_90.png",
       "scale" : "3x"
     }
   ],
