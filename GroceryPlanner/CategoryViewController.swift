@@ -21,19 +21,10 @@ class CategoryViewController: UITableViewController {
     var uID:String!
     var rootUrl:String!
     
-    override func viewDidLoad() {
-        print("cat: b4 viewLoad \(categoryNames.count)")
-        
+    override func viewDidLoad() {        
         super.viewDidLoad()
-        print("cat: after viewLoad and calling fetch \(categoryNames.count)")
-        print("UID cat: \(uID)")
         rootUrl = "https://groceryplanner-e2a60.firebaseio.com/users/"+uID+"/categories/"
-        for i in categoryNames{
-            print("cat: \(i)")
-        }
         fetchCategories()
-        print("cat: after calling fetch \(categoryNames.count)")
-        
         categoryView.delegate = self
         categoryView.dataSource = self
     }
@@ -61,20 +52,15 @@ class CategoryViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCategory = categoryNames[indexPath.row]
-        print("item: \(selectedCategory)")
         valToPass = selectedCategory
-        print("item: valTO \(valToPass)")
         performSegue(withIdentifier: "toItems", sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "toItems"){
             let nav = segue.destination as! UINavigationController
-            print("item nav working")
             let itemView = nav.topViewController as! ItemsTableViewController
-            print("item to sent: \(valToPass)")
             itemView.categoryValue = valToPass
             itemView.uID = uID
-            print("item itemView.: \(itemView.categoryValue) ")
         }
         
         if(segue.identifier == "categoryPopupSegue"){
@@ -85,7 +71,6 @@ class CategoryViewController: UITableViewController {
     
     func fetchCategories()
     {
-        
         print("cat: inside calling fetch \(categoryNames.count)")
 
         rootRef = FIRDatabase.database().reference(fromURL: rootUrl)
@@ -117,32 +102,4 @@ class CategoryViewController: UITableViewController {
             }
         }
     }
-    
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 }

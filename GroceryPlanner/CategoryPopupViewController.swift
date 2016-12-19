@@ -26,47 +26,29 @@ class CategoryPopupViewController: UIViewController {
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        priceLabel.text = "0"
-        quantityLabel.text = "0"
-        print("CategoryPopUp \(uID)")
         rootURL = "https://groceryplanner-e2a60.firebaseio.com/users/"+uID+"/categories/"
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func saveCategory(_ sender: AnyObject) {
         
-        
-        if categoryLabel.text != nil {
-            if itemLabel.text != nil {
-                if priceLabel.text != "0" {
-                    if quantityLabel.text != "0"{
-                        let categoryName = categoryLabel.text
-                        let itemName = itemLabel.text
-                        let price:Float = Float(priceLabel.text!)!
-                        let quantity = Float(quantityLabel.text!)!
-                        let dict: [String: Float] = ["price": price, "quantity": quantity]
-                        ref = FIRDatabase.database().reference(fromURL: rootURL)
-                        ref.child(categoryName!).child(itemName!).setValue(dict)
-                        self.dismiss(animated: true, completion: nil)
-                        
-                    }
-                }
-                        
-            }
+        if (!categoryLabel.text!.isEmpty && !itemLabel.text!.isEmpty && priceLabel.text != "0" && !priceLabel.text!.isEmpty && quantityLabel.text != "0" && !quantityLabel.text!.isEmpty) {
+            let categoryName = self.categoryLabel.text
+            let itemName = itemLabel.text
+            let price:Float = Float(priceLabel.text!)!
+            let quantity = Float(quantityLabel.text!)!
+            let dict: [String: Float] = ["price": price, "quantity": quantity]
+            ref = FIRDatabase.database().reference(fromURL: rootURL)
+            ref.child(categoryName!).child(itemName!).setValue(dict)
+            self.dismiss(animated: true, completion: nil)
         }
-        errorLabel.text = "Please enter data to save."
-        print("cat pop: uploaded")
-        
+            
+        else{
+            errorLabel.text = "Please enter data to save."
+        }
+        print("cat pop: uploaded")        
     }
     
     @IBAction func cancel(_ sender: AnyObject) {
         self.dismiss(animated: true, completion: nil)
-    }
-    
-
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

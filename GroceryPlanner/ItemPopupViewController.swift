@@ -28,29 +28,24 @@ class ItemPopupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        priceLabel.text = "0"
-        quantityLabel.text = "0"
-        print("itemPopUp \(uID)")
     }
     
     @IBAction func saveItem(_ sender: AnyObject) {
         
         rootURL = "https://groceryplanner-e2a60.firebaseio.com/users/"+uID+"/categories/"+category+"/"
-        if itemLabel.text != nil {
-            if priceLabel.text != "0" {
-                if quantityLabel.text != "0"{
-                    let itemName = itemLabel.text
-                    let price:Float = Float(priceLabel.text!)!
-                    let quantity = Float(quantityLabel.text!)!
-                    let dict: [String: Float] = ["price": price, "quantity": quantity]
-                    ref = FIRDatabase.database().reference(fromURL: rootURL)
-                    ref.child(itemName!).setValue(dict)
-                    self.dismiss(animated: true, completion: nil)
-                    
-                }
-            }
+        if (!itemLabel.text!.isEmpty && priceLabel.text != "0" && !priceLabel.text!.isEmpty && quantityLabel.text != "0" && !quantityLabel.text!.isEmpty) {
+            let itemName = itemLabel.text
+            let price:Float = Float(priceLabel.text!)!
+            let quantity = Float(quantityLabel.text!)!
+            let dict: [String: Float] = ["price": price, "quantity": quantity]
+            ref = FIRDatabase.database().reference(fromURL: rootURL)
+            ref.child(itemName!).setValue(dict)
+            self.dismiss(animated: true, completion: nil)
         }
-        errorLabel.text = "Please enter data to save."
+            
+        else{
+            errorLabel.text = "Please enter data to save."
+        }
         
     }
     
@@ -77,12 +72,4 @@ class ItemPopupViewController: UIViewController {
         self.popupView.endEditing(true)
         return false
     }
-
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
 }
