@@ -5,6 +5,7 @@
 //  Created by Prathyusha Makam Prasad on 12/10/16.
 //  Copyright © 2016 Prathyusha Makam Prasad. All rights reserved.
 //
+
 // Displays the next week's list items to be purchased
 
 import UIKit
@@ -28,7 +29,7 @@ class MyListViewController: UITableViewController{
         rootUrl = "https://groceryplanner-e2a60.firebaseio.com/users/"+uID+"/"
     }
     
-// retrivies the data whenever view will appears on the app
+// Retrieves the data whenever view will appears on the app
     override func viewWillAppear(_ animated: Bool) {
         getCategories()
     }
@@ -66,13 +67,16 @@ class MyListViewController: UITableViewController{
     
     func getCategories(){
         listItems = []
+        
         // get category for each user
         rootRef = FIRDatabase.database().reference(fromURL: rootUrl)
         rootRef.child("categories").observeSingleEvent(of: .value, with: { snapshot in
             if let result = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 for child in result {
+                    
                     // create the child url
                     self.childUrl = self.rootUrl+"categories/"+child.key+"/"
+                    
                     // get item under each category
                     self.getItems()
                 }
@@ -84,7 +88,7 @@ class MyListViewController: UITableViewController{
         }
     }
     
-// retrieves all the items of every category from the database
+// Retrieves all the items of every category from the database
     func getItems(){
         self.childRef = FIRDatabase.database().reference(fromURL: self.childUrl)
         self.childRef.observeSingleEvent(of:.value, with: {
@@ -98,7 +102,7 @@ class MyListViewController: UITableViewController{
         })
     }
     
-// Logouts from the current sigined in user and routes back to the login page
+// Logout from the current sigined in user account and routes back to the login page
     @IBAction func logoutButton(_ sender: AnyObject) {
         if FIRAuth.auth()?.currentUser != nil {
             do {

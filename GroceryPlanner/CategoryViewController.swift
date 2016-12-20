@@ -5,7 +5,8 @@
 //  Created by Prathyusha Makam Prasad on 12/8/16.
 //  Copyright © 2016 Prathyusha Makam Prasad. All rights reserved.
 //
-// CategoryViewController first tab in TabView Controller. Displays all categories created by the user.
+
+// CategoryViewController is the first tab in TabView Controller. Displays all categories created by the user.
 
 import UIKit
 import Firebase
@@ -50,6 +51,7 @@ class CategoryViewController: UITableViewController {
     }
     
 // On clicking the cell in table it reoutes to a table view that displays Items in that particular category
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCategory = categoryNames[indexPath.row]
         valToPass = selectedCategory
@@ -86,7 +88,7 @@ class CategoryViewController: UITableViewController {
             }
             self.categoryNames = newCategories
             
-            // reloads the table view after retrieving the data from database
+            // Reloads the table view after retrieving the data from database
             DispatchQueue.main.async {
                 print("cat: reload data")
                 self.categoryView.reloadData()
@@ -94,7 +96,7 @@ class CategoryViewController: UITableViewController {
         })
     }
 
-// Logouts from the current sigined in user and routes back to the login page
+// Logouts from the current sigined in user account and routes back to the login page
     @IBAction func logoutButton(_ sender: AnyObject) {
         if FIRAuth.auth()?.currentUser != nil {
             do {

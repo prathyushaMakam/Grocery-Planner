@@ -5,14 +5,13 @@
 //  Created by Kanvi Khanna on 12/10/16.
 //  Copyright © 2016 Prathyusha Makam Prasad. All rights reserved.
 //
+
 // Displays the stored items in that particular category
 
 import UIKit
 import Firebase
 import FirebaseDatabase
 import FirebaseAuth
-
-
 
 class ItemsTableViewController: UITableViewController {
 
@@ -50,7 +49,7 @@ class ItemsTableViewController: UITableViewController {
         return listItems.count
     }
 
-// Displays Items in that particular category
+// Displays all the items in a particular category
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath)
         cell.textLabel?.text = listItems[indexPath.row]
@@ -78,7 +77,7 @@ class ItemsTableViewController: UITableViewController {
             }
             self.listItems = newItems
             
-// reloads the table view after retrieving the data from database
+// Reloads the table view after retrieving the data from database
             DispatchQueue.main.async {
                 print("cat: reload data")
                 self.itemsTableView.reloadData()

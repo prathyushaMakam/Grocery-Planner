@@ -5,6 +5,7 @@
 //  Created by Kanvi Khanna on 12/14/16.
 //  Copyright © 2016 Prathyusha Makam Prasad. All rights reserved.
 //
+
 // Displays the total amount spent on each category in a pie chart.
 
 import UIKit
@@ -36,7 +37,7 @@ class GraphPopUpViewController: UIViewController {
         initPlot()
     }
     
-    // exits from the graph view and goes back to the expense view controller
+    // Exits from the graph view and goes back to the expense view controller
     @IBAction func exitFromGraph(_ sender: AnyObject) {
         self.dismiss(animated: true, completion: nil)
     }

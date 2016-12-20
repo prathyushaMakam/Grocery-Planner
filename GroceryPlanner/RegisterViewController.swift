@@ -5,7 +5,8 @@
 //  Created by Prathyusha Makam Prasad on 12/15/16.
 //  Copyright © 2016 Prathyusha Makam Prasad. All rights reserved.
 //
-// Allows the user to create new user
+
+// Allows the user to create new account
 
 import UIKit
 import Firebase
@@ -29,7 +30,7 @@ class RegisterViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-// Creates the new user using the entered gmail and password
+// Creates the new user using the entered gmail address and password
     @IBAction func createAccount(_ sender: UIButton) {
         
         let email = emailTextField.text
@@ -57,12 +58,12 @@ class RegisterViewController: UIViewController {
     
 // Implements the alert pop-up
     func showAlert(_ message: String) {
-        let alertController = UIAlertController(title: "To Do App", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "Grocery Planner", message: message, preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }
     
-// Stores the new user's gmail and password in database
+// Stores the new user's gmail address and password in database
     func setCredentials() {
         
         let dict: [String: String] = ["username": emailTextField.text!, "password": passwordTextField.text!]
@@ -70,13 +71,14 @@ class RegisterViewController: UIViewController {
         ref.child(userID).setValue(dict)
     }
 
-// routes to the first scene (Tab View Controller) after logging in succesfully and sends the current UserID
+// Routes to the first scene (Tab View Controller) after logging in succesfully and sends the current UserID
+    
     func signIn() {
         print("UserID sigin: \(self.userID)")
         performSegue(withIdentifier: "toHome", sender: self)
     }
     
-// routes back to login page
+// Routes back to login page
     @IBAction func goToLogin(_ sender: AnyObject) {
         self.dismiss(animated: true, completion: {})
     }

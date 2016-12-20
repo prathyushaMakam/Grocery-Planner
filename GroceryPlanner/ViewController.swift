@@ -5,6 +5,7 @@
 //  Created by Prathyusha Makam Prasad on 11/20/16.
 //  Copyright © 2016 Prathyusha Makam Prasad. All rights reserved.
 //
+
 // Allows the user to signIn if they already have the account.
 
 import UIKit
@@ -24,7 +25,7 @@ class ViewController: UIViewController {
         
     }
     
-// implements the login  authorisation for the e-mail and password entered by the user
+// Implements the login authorization for the e-mail and password entered by the user
     @IBAction func loginAction(_ sender: AnyObject) {
         
         let email = emailTextbox.text
@@ -53,14 +54,15 @@ class ViewController: UIViewController {
     }
     
     
-// implements alert pop-up
+// Implements alert pop-up
     func showAlert(_ message: String) {
-        let alertController = UIAlertController(title: "To Do App", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "Grocery Planner", message: message, preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }
     
-// routes to the first scene (Tab View Controller) after logging in succesfully and sends the current UserID
+// Routes to the first scene (Tab View Controller) after logging in succesfully and sends the current UserID
+    
     func signIn() {
         performSegue(withIdentifier: "loginToTabView", sender: self)
     }

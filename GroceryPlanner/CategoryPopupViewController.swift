@@ -5,6 +5,7 @@
 //  Created by Kanvi Khanna on 12/10/16.
 //  Copyright © 2016 Prathyusha Makam Prasad. All rights reserved.
 //
+
 // CategoryPopupViewController allows user to create the new category.
 
 import UIKit
@@ -31,6 +32,7 @@ class CategoryPopupViewController: UIViewController {
     }
     
 // New category entered by the user is uploaded to the database along with the item and its price and quantity.
+    
     @IBAction func saveCategory(_ sender: AnyObject) {
         
         if (!categoryLabel.text!.isEmpty && !itemLabel.text!.isEmpty && priceLabel.text != "0" && !priceLabel.text!.isEmpty && quantityLabel.text != "0" && !quantityLabel.text!.isEmpty) {

@@ -5,6 +5,7 @@
 //  Created by Prathyusha Makam Prasad on 12/9/16.
 //  Copyright © 2016 Prathyusha Makam Prasad. All rights reserved.
 //
+
 // Displays the total amount of each category individually and also final total amount spent
 
 import UIKit
@@ -33,7 +34,7 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
         rootUrl = "https://groceryplanner-e2a60.firebaseio.com/users/"+uID+"/categories/"
     }
     
-// retrivies the data whenever view will appears on the app
+// Retrieves the data whenever view will appears on the app
     override func viewWillAppear(_ animated: Bool) {
         getCategories()
     }
@@ -81,7 +82,7 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    //retrieves all items under all categories
+    // Retrieves all items under all categories
     func getItems1(cat:String, url:String){
         childRef = FIRDatabase.database().reference(fromURL: url)
         childRef.observeSingleEvent(of: .value, with: {snapshot in
@@ -100,7 +101,8 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-//retrieves the prices and quantities of each item. It calculates the total amount spent and on each category individually
+// Retrieves the prices and quantities of each item. It calculates the total amount spent and on each category individually
+    
     func getExpense(item:String,cat:String, expenseUrl:String){
         expenseRef = FIRDatabase.database().reference(fromURL: expenseUrl)
         expenseRef.observeSingleEvent(of:.value, with: {snapshot in
@@ -125,7 +127,7 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
 
-    // logouts from the current user.
+    // Logout from the current user account.
     @IBAction func logoutButton(_ sender: AnyObject) {
         if FIRAuth.auth()?.currentUser != nil {
             do {
