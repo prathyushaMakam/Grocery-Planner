@@ -59,7 +59,7 @@ class GraphPopUpViewController: UIViewController {
         let graph = CPTXYGraph(frame: hostView.bounds)
         hostView.hostedGraph = graph
         graph.paddingLeft = 0.0
-        graph.paddingTop = 0.0
+        graph.paddingTop = -200.0
         graph.paddingRight = 0.0
         graph.paddingBottom = 0.0
         graph.axisSet = nil
@@ -129,7 +129,7 @@ class GraphPopUpViewController: UIViewController {
             
         } else {
             graph.legendAnchor = .bottomRight
-            graph.legendDisplacement = CGPoint(x: -50.0, y: 50.0)
+            graph.legendDisplacement = CGPoint(x: -30.0, y: 80.0)
         }
     }
     
