@@ -5,6 +5,7 @@
 //  Created by Kanvi Khanna on 12/10/16.
 //  Copyright © 2016 Prathyusha Makam Prasad. All rights reserved.
 //
+// Displays the stored items in that particular category
 
 import UIKit
 import Firebase
@@ -37,7 +38,6 @@ class ItemsTableViewController: UITableViewController {
         }
     }
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -50,11 +50,10 @@ class ItemsTableViewController: UITableViewController {
         return listItems.count
     }
 
-    
+// Displays Items in that particular category
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath)
         cell.textLabel?.text = listItems[indexPath.row]
-        
         return cell
     }
     
@@ -67,6 +66,7 @@ class ItemsTableViewController: UITableViewController {
         }
     }
 
+//  Fetches the categories of the current user from the Database
     func fetchItems()
     {
         rootRef = FIRDatabase.database().reference(fromURL: rootUrl)
@@ -77,6 +77,8 @@ class ItemsTableViewController: UITableViewController {
                 newItems.append((items as AnyObject).key)
             }
             self.listItems = newItems
+            
+// reloads the table view after retrieving the data from database
             DispatchQueue.main.async {
                 print("cat: reload data")
                 self.itemsTableView.reloadData()

@@ -5,6 +5,7 @@
 //  Created by Kanvi Khanna on 12/10/16.
 //  Copyright © 2016 Prathyusha Makam Prasad. All rights reserved.
 //
+// ItemPopupViewController allows user to create the new Items.
 
 import UIKit
 import Firebase
@@ -30,6 +31,7 @@ class ItemPopupViewController: UIViewController {
         super.viewDidLoad()
     }
     
+// New item entered by the user is uploaded to the database along with its price and quantity.
     @IBAction func saveItem(_ sender: AnyObject) {
         
         rootURL = "https://groceryplanner-e2a60.firebaseio.com/users/"+uID+"/categories/"+category+"/"
@@ -55,14 +57,14 @@ class ItemPopupViewController: UIViewController {
     
     func textFieldDidBeginEditing(textField: UITextField) {
         if textField != self.itemLabel && keyboardActive == false {
-            self.popupView.frame.origin.y -= 165
+            self.popupView.frame.origin.y -= 96
             self.keyboardActive = true
         }
     }
     
     func textFieldShouldEndEditing(textField: UITextField) -> Bool {
         if textField != self.itemLabel && keyboardActive == true {
-            self.popupView.frame.origin.y += 165
+            self.popupView.frame.origin.y += 96
             self.keyboardActive = false
         }
         return true

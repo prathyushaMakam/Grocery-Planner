@@ -5,6 +5,7 @@
 //  Created by Prathyusha Makam Prasad on 12/10/16.
 //  Copyright © 2016 Prathyusha Makam Prasad. All rights reserved.
 //
+// Displays the next week's list items to be purchased
 
 import UIKit
 import Firebase
@@ -27,6 +28,7 @@ class MyListViewController: UITableViewController{
         rootUrl = "https://groceryplanner-e2a60.firebaseio.com/users/"+uID+"/"
     }
     
+// retrivies the data whenever view will appears on the app
     override func viewWillAppear(_ animated: Bool) {
         getCategories()
     }
@@ -38,23 +40,21 @@ class MyListViewController: UITableViewController{
     
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return listItems.count
     }
     
+// Displays the next week list on the table view
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myListCell", for: indexPath)
         cell.textLabel?.text = listItems[indexPath.row]
-        
         return cell
     }
     
-    // Override to support editing the table view.
+// Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             listItems.remove(at: indexPath.row)
@@ -84,6 +84,7 @@ class MyListViewController: UITableViewController{
         }
     }
     
+// retrieves all the items of every category from the database
     func getItems(){
         self.childRef = FIRDatabase.database().reference(fromURL: self.childUrl)
         self.childRef.observeSingleEvent(of:.value, with: {
@@ -97,6 +98,7 @@ class MyListViewController: UITableViewController{
         })
     }
     
+// Logouts from the current sigined in user and routes back to the login page
     @IBAction func logoutButton(_ sender: AnyObject) {
         if FIRAuth.auth()?.currentUser != nil {
             do {

@@ -5,6 +5,7 @@
 //  Created by Prathyusha Makam Prasad on 12/8/16.
 //  Copyright © 2016 Prathyusha Makam Prasad. All rights reserved.
 //
+// CategoryViewController first tab in TabView Controller. Displays all categories created by the user.
 
 import UIKit
 import Firebase
@@ -33,7 +34,6 @@ class CategoryViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
 
-    // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -41,20 +41,21 @@ class CategoryViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categoryNames.count
     }
-    
+
+// Displays the category names in a table
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
         cell.textLabel?.text = categoryNames[indexPath.row]
-        
-        print("cat: inside cellRow")
         return cell
     }
     
+// On clicking the cell in table it reoutes to a table view that displays Items in that particular category
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCategory = categoryNames[indexPath.row]
         valToPass = selectedCategory
         performSegue(withIdentifier: "toItems", sender: self)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "toItems"){
             let nav = segue.destination as! UINavigationController
@@ -69,6 +70,7 @@ class CategoryViewController: UITableViewController {
         }
     }
     
+//  Fetches the categories of the current user from the Database
     func fetchCategories()
     {
         print("cat: inside calling fetch \(categoryNames.count)")
@@ -83,6 +85,8 @@ class CategoryViewController: UITableViewController {
                 print("cat: \(self.categoryNames) n \(self.categoryNames.count)")
             }
             self.categoryNames = newCategories
+            
+            // reloads the table view after retrieving the data from database
             DispatchQueue.main.async {
                 print("cat: reload data")
                 self.categoryView.reloadData()
@@ -90,6 +94,7 @@ class CategoryViewController: UITableViewController {
         })
     }
 
+// Logouts from the current sigined in user and routes back to the login page
     @IBAction func logoutButton(_ sender: AnyObject) {
         if FIRAuth.auth()?.currentUser != nil {
             do {

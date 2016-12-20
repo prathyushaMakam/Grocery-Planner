@@ -5,6 +5,7 @@
 //  Created by Prathyusha Makam Prasad on 12/9/16.
 //  Copyright © 2016 Prathyusha Makam Prasad. All rights reserved.
 //
+// Displays the total amount of each category individually and also final total amount spent
 
 import UIKit
 import Firebase
@@ -32,6 +33,7 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
         rootUrl = "https://groceryplanner-e2a60.firebaseio.com/users/"+uID+"/categories/"
     }
     
+// retrivies the data whenever view will appears on the app
     override func viewWillAppear(_ animated: Bool) {
         getCategories()
     }
@@ -39,31 +41,27 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
     // MARK: - Table view data source
     
     public func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return expenses.count
     }
     
+// Displays the categories along with their costs on the table view
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "expenseCell", for: indexPath)
-        
         let key   = Array(self.expenses.keys)[indexPath.row]
         let value = Array(self.expenses.values)[indexPath.row]
         
         // Configure the cell...
         cell.textLabel?.text = key
         cell.detailTextLabel?.text = String(describing: value)
-        
         return cell
     }
 
     func getCategories(){
         self.totalExpense = 0
-        
         rootRef = FIRDatabase.database().reference(fromURL: rootUrl)
         rootRef.observeSingleEvent(of: .value, with: { snapshot in
             if let result = snapshot.children.allObjects as? [FIRDataSnapshot] {
@@ -83,7 +81,7 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    //get all items under all categories
+    //retrieves all items under all categories
     func getItems1(cat:String, url:String){
         childRef = FIRDatabase.database().reference(fromURL: url)
         childRef.observeSingleEvent(of: .value, with: {snapshot in
@@ -102,8 +100,8 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+//retrieves the prices and quantities of each item. It calculates the total amount spent and on each category individually
     func getExpense(item:String,cat:String, expenseUrl:String){
-        
         expenseRef = FIRDatabase.database().reference(fromURL: expenseUrl)
         expenseRef.observeSingleEvent(of:.value, with: {snapshot in
             if let dict = snapshot.value as? NSDictionary{
@@ -127,6 +125,7 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
 
+    // logouts from the current user.
     @IBAction func logoutButton(_ sender: AnyObject) {
         if FIRAuth.auth()?.currentUser != nil {
             do {
