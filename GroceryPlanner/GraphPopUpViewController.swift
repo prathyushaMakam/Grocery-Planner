@@ -129,7 +129,7 @@ class GraphPopUpViewController: UIViewController {
             
         } else {
             graph.legendAnchor = .bottomRight
-            graph.legendDisplacement = CGPoint(x: -8.0, y: 8.0)
+            graph.legendDisplacement = CGPoint(x: -50.0, y: 50.0)
         }
     }
     
