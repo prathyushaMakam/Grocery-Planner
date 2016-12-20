@@ -56,8 +56,11 @@ class ItemsTableViewController: UITableViewController {
         return cell
     }
     
+    // Deletes the item from the database and the tableView.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            let deleteItem = listItems[indexPath.row]
+        FIRDatabase.database().reference().child("users").child(FIRAuth.auth()!.currentUser!.uid).child("categories").child(categoryValue).child(deleteItem).removeValue()
             listItems.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
@@ -65,6 +68,7 @@ class ItemsTableViewController: UITableViewController {
         }
     }
 
+    
 //  Fetches the categories of the current user from the Database
     func fetchItems()
     {
