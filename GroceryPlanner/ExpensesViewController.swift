@@ -91,6 +91,7 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
                     let item1 = ((child as AnyObject).key) as String
                     let expenseUrl = url+child.key+"/"
                     self.getExpense(item:item1,cat:cat, expenseUrl:expenseUrl)
+                    print("exp item expenseUrl = \(expenseUrl)")
                 }
             }
             else {
@@ -105,10 +106,12 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
     
     func getExpense(item:String,cat:String, expenseUrl:String){
         expenseRef = FIRDatabase.database().reference(fromURL: expenseUrl)
+        print("exp expenseUrl = \(expenseUrl)")
         expenseRef.observeSingleEvent(of:.value, with: {snapshot in
             if let dict = snapshot.value as? NSDictionary{
                 let price = dict["price"] as? Float
                 let quantity = dict["quantity"] as? Float
+                print("exp quanity = \(quantity)")
                 let cost = price! * quantity!
                 self.totalExpense = self.totalExpense + cost
                 self.expenses[cat] = self.expenses[cat]!+cost
