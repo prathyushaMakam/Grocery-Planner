@@ -22,6 +22,7 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
     var rootRef: FIRDatabaseReference!
     var childRef: FIRDatabaseReference!
     var expenseRef: FIRDatabaseReference!
+    var newList: [String:String] = [:]
     var rootUrl:String!
     var uID:String!
     var expenses: [String:Float] = [:]
@@ -111,6 +112,8 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
             if let dict = snapshot.value as? NSDictionary{
                 let price = dict["price"] as? Float
                 let quantity = dict["quantity"] as? Float
+                let newquantity = String(describing: dict["quantity"]!)
+                self.newList[item] = newquantity
                 print("exp quanity = \(quantity)")
                 let cost = price! * quantity!
                 self.totalExpense = self.totalExpense + cost
@@ -120,6 +123,10 @@ class ExpensesViewController: UIViewController, UITableViewDelegate, UITableView
             else {
                 print("no results\n")
             }
+            // uploads the new list to database
+            let newListUrl = "https://groceryplanner-e2a60.firebaseio.com/users/"+self.uID+"/NewList/"
+            let newListRef = FIRDatabase.database().reference(fromURL: newListUrl)
+            newListRef.updateChildValues(self.newList)
             
             DispatchQueue.main.async {
                 self.expensesTableView.reloadData()

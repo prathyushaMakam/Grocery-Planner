@@ -32,7 +32,7 @@ class MyListViewController: UITableViewController{
     
 // Retrieves the data whenever view will appears on the app
     override func viewWillAppear(_ animated: Bool) {
-        getCategories()
+      //  getCategories()
         self.uploadNewList()
     }
     
@@ -137,10 +137,12 @@ class MyListViewController: UITableViewController{
     }
     
     func  uploadNewList() {
+        listItems = []
+
         // uploads the new list to database
         let newListUrl = self.rootUrl+"/NewList/"
         let newListRef = FIRDatabase.database().reference(fromURL: newListUrl)
-        newListRef.updateChildValues(self.newList)
+       // newListRef.updateChildValues(self.newList)
         
         // retrives new list from firebase to update the table.
         newListRef.observeSingleEvent(of:.value, with: {snapshot in
