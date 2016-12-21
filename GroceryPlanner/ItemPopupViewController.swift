@@ -41,8 +41,17 @@ class ItemPopupViewController: UIViewController {
             let price:Float = Float(priceLabel.text!)!
             let quantity = Float(quantityLabel.text!)!
             let dict: [String: Float] = ["price": price, "quantity": quantity]
+            var newList: [String:String] = [:]
+            let newQuantity = quantityLabel.text
+            newList[itemName!] = newQuantity
+            
             ref = FIRDatabase.database().reference(fromURL: rootURL)
             ref.child(itemName!).setValue(dict)
+            
+            let newListUrl = "https://groceryplanner-e2a60.firebaseio.com/users/"+uID+"/NewList/"
+            let newRef = FIRDatabase.database().reference(fromURL: newListUrl)
+            newRef.updateChildValues(newList)
+            
             self.dismiss(animated: true, completion: nil)
         }
             

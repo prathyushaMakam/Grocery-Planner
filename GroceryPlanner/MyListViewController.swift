@@ -21,7 +21,7 @@ class MyListViewController: UITableViewController{
     var childRef: FIRDatabaseReference!
     var listItems: [String] = []
     var itemQuantity: [String] = []
-    var newList: [String:String] = [:]
+   // var newList: [String:String] = [:]
     var rootUrl:String!
     var uID:String!
     
@@ -32,7 +32,7 @@ class MyListViewController: UITableViewController{
     
 // Retrieves the data whenever view will appears on the app
     override func viewWillAppear(_ animated: Bool) {
-      //  getCategories()
+     //   getCategories()
         self.uploadNewList()
     }
     
@@ -53,8 +53,7 @@ class MyListViewController: UITableViewController{
 // Displays the next week list on the table view
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myListCell", for: indexPath)
-        let itemName = listItems[indexPath.row]
-        cell.textLabel?.text = itemName
+        cell.textLabel?.text = listItems[indexPath.row]
         cell.detailTextLabel?.text =  itemQuantity[indexPath.row]
         return cell
     }
@@ -76,7 +75,7 @@ class MyListViewController: UITableViewController{
         }
     }
     
-    func getCategories(){
+ /*   func getCategories(){
         listItems = []
         
         // get category for each user
@@ -126,7 +125,7 @@ class MyListViewController: UITableViewController{
         quantityRef.observeSingleEvent(of:.value, with: {snapshot in
             if let dict = snapshot.value as? NSDictionary{
                 let itemQuantity = String(describing: dict["quantity"]!)
-                self.newList[newItem] = itemQuantity
+               // self.newList[newItem] = itemQuantity
             }else {
                 print("no results\n")
             }
@@ -134,7 +133,7 @@ class MyListViewController: UITableViewController{
         { (error) in
             print(error.localizedDescription)
         }
-    }
+    }*/
     
     func  uploadNewList() {
         listItems = []
@@ -142,14 +141,15 @@ class MyListViewController: UITableViewController{
         // uploads the new list to database
         let newListUrl = self.rootUrl+"/NewList/"
         let newListRef = FIRDatabase.database().reference(fromURL: newListUrl)
-       // newListRef.updateChildValues(self.newList)
+   //     newListRef.updateChildValues(self.newList)
         
         // retrives new list from firebase to update the table.
         newListRef.observeSingleEvent(of:.value, with: {snapshot in
             let enumerator = snapshot.children
             while let items = enumerator.nextObject() as? FIRDataSnapshot{
                 let new = items.key
-                let quantity = String(describing: items.value!)
+                let quantity = items.value as! String
+                print("\(quantity)")
                 self.listItems.append(new)
                 self.itemQuantity.append(quantity)
                 print("\(new) + \(quantity)")
