@@ -17,11 +17,9 @@ import FirebaseAuth
 class MyListViewController: UITableViewController{
 
     @IBOutlet weak var myListTableView: UITableView!
-    var rootRef: FIRDatabaseReference!
-    var childRef: FIRDatabaseReference!
     var listItems: [String] = []
     var itemQuantity: [String] = []
-   // var newList: [String:String] = [:]
+    var newList: [String:String] = [:]
     var rootUrl:String!
     var uID:String!
     
@@ -32,8 +30,7 @@ class MyListViewController: UITableViewController{
     
 // Retrieves the data whenever view will appears on the app
     override func viewWillAppear(_ animated: Bool) {
-     //   getCategories()
-        self.uploadNewList()
+        self.updateNewList()
     }
     
     override func didReceiveMemoryWarning()
@@ -53,8 +50,9 @@ class MyListViewController: UITableViewController{
 // Displays the next week list on the table view
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myListCell", for: indexPath)
+        let newItem = listItems[indexPath.row]
         cell.textLabel?.text = listItems[indexPath.row]
-        cell.detailTextLabel?.text =  itemQuantity[indexPath.row]
+        cell.detailTextLabel?.text =  newList[newItem]
         return cell
     }
     
@@ -75,73 +73,11 @@ class MyListViewController: UITableViewController{
         }
     }
     
- /*   func getCategories(){
-        listItems = []
-        
-        // get category for each user
-        rootRef = FIRDatabase.database().reference(fromURL: rootUrl)
-        rootRef.child("categories").observeSingleEvent(of: .value, with: { snapshot in
-            if let result = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                for child in result {
-                    
-                    // create the child url to get items
-                    let childUrl = self.rootUrl+"categories/"+child.key+"/"
-                    // get item under each category
-                    self.getItems(childUrl: childUrl)
-                }
-            } else {
-                print("no results")
-            }
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-    }
-    
-// Retrieves all the items of every category from the database
-    func getItems(childUrl: String){
-        self.childRef = FIRDatabase.database().reference(fromURL: childUrl)
-        self.childRef.observeSingleEvent(of:.value, with: {
-            snapshot1 in
-            if let result = snapshot1.children.allObjects as? [FIRDataSnapshot]{
-            for item in result{
-                let newItem = ((item as AnyObject).key) as String
-                //self.listItems.append((item as AnyObject).key)
-                // url to get the quantities of items
-                let quantityUrl = childUrl+newItem+"/"
-                self.getQuantity(newItem:newItem, quantityUrl:quantityUrl)
-            }
-            }
-            else {
-                print("no results\n")
-            }
-        })
-        { (error) in
-            print(error.localizedDescription)
-        }
-    }
-    
-    func getQuantity(newItem:String, quantityUrl:String){
-        let quantityRef = FIRDatabase.database().reference(fromURL: quantityUrl)
-        quantityRef.observeSingleEvent(of:.value, with: {snapshot in
-            if let dict = snapshot.value as? NSDictionary{
-                let itemQuantity = String(describing: dict["quantity"]!)
-               // self.newList[newItem] = itemQuantity
-            }else {
-                print("no results\n")
-            }
-        })
-        { (error) in
-            print(error.localizedDescription)
-        }
-    }*/
-    
-    func  uploadNewList() {
+    func  updateNewList() {
         listItems = []
 
-        // uploads the new list to database
         let newListUrl = self.rootUrl+"/NewList/"
         let newListRef = FIRDatabase.database().reference(fromURL: newListUrl)
-   //     newListRef.updateChildValues(self.newList)
         
         // retrives new list from firebase to update the table.
         newListRef.observeSingleEvent(of:.value, with: {snapshot in
@@ -150,6 +86,7 @@ class MyListViewController: UITableViewController{
                 let new = items.key
                 let quantity = items.value as! String
                 print("\(quantity)")
+                self.newList[new] = quantity
                 self.listItems.append(new)
                 self.itemQuantity.append(quantity)
                 print("\(new) + \(quantity)")
